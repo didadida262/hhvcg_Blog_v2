@@ -29,14 +29,14 @@ const Example = () => {
 `HTML 中夹杂着看似 JavaScript 的语句在其中`,称之为jsx语法，它是`对 JavaScript 语法的扩展，也能看做React.createElement的语法糖`。其中的React.createElement做的事情很清晰，他有三个参数type、config和children。顾名思义，分别代表节点类型如`div`、节点所有属性如`className`和节点的子节点。就是说以jsx文件代码为输入，编译生成虚拟dom，然后通过render方法生成真实的dom节点。
 jsx 看起来有点像模板语言，但是他又具有 JavaScript 的全部功能。类似于vue中的模版语法，这些机制设计的目的只有一个：`关注点分离, 简化程序的开发和维护`。
 
-**顺便差一张react的渲染逻辑图，跟vue如出一辙。**
+**贴一张react的渲染逻辑图，跟vue如出一辙。**
 <img src="/img/react框架流程.jpg" alt="">
 
-### 条件渲染，类似于vue中的v-if.jsx 中的写法如下：
+### 条件渲染，类似于vue中的v-if，jsx 中的写法如下：
 ```javascript
 const Example = () => {
-    // 条件判断，随机显示男女
-    const greater = Math.random() * 10 > 5;
+  // 条件判断，随机显示男女
+  const greater = Math.random() * 10 > 5;
   return (
     {greater > 5 ? (
       <div style={{ color: 'green' }}>我是男生</div>
@@ -258,9 +258,9 @@ function ExampleWithManyStates() {
 state的变量不能直接修改，这是规则
 
 `useEffect`
-这个 hook 的核心作用就是在组件渲染完毕之后，你想做点别的事情（我们统一把这些别的事情称为“副作用”）。
+这个 hook 的核心作用就是在组件渲染完毕之后，你想做点别的事情（我们统一把这些别的事情称为`副作用`）。
 比如你想渲染完之后立即进行数据获取、事件订阅或者手动修改过 DOM，这些都是副作用，都可以在 useEffect 中执行。
-useEffect 就是一个 Effect Hook，给函数组件增加了操作副作用的能力。它跟 class 组件中的 componentDidMount(组件第一次渲染结束后触发)、componentDidUpdate（组件每次更新结束后触发） 和 componentWillUnmount（组件将要卸载的时候触发） 具有相同的用途，只不过被合并成了一个 API（链接：使用 Effect Hook里展示了 useEffect 和 clss 组件中这些生命周期的对比例子）。
+useEffect 就是一个 Effect Hook，给函数组件增加了操作副作用的能力。它跟 class 组件中的 componentDidMount(组件第一次渲染结束后触发)、componentDidUpdate（组件每次更新结束后触发） 和 componentWillUnmount（组件将要卸载的时候触发） 具有相同的用途，只不过被合并成了一个 API。
 即 useEffect 可以根据参数的不同配置，在组件不同的渲染时机被调用。useEffect 接受两个参数：`副作用函数`,`依赖项，类型是数组`
 ```javascript
 // 依赖项是空数组，第一次渲染结束后，调用一次
