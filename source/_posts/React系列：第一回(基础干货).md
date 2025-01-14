@@ -473,20 +473,57 @@ useLayoutEffect是在所有dom变更之后`同步调用`。重点就在于这个
   - react中的通信，同vue有点类似，子组建通过props获取父组建的值，但是因为reat是单向数据流，子组建无法直接修改父组建的值。所以子组建通过调用父组建的方法把值传过去
   - 无关组件之间传值，`context，redux`。其中context通常用于小型的项目，组件树中的传值，redux相比之则更适用于大型项目的全局状态管理。
 
-  contex钩子的使用，类似于redux，代码如下
+  contex钩子的使用，类似于redux，事例代码如下
 
-  ```javascript
-  <!--根组件中定义，provider包裹-->
-  export const TextContext = React.createContext('测试数据')
-    <TextContext.Provider value="dark">
-    </TextContext.Provider>
+```jsx
+// 定义一个context文件，暴露组件及context
+import { createContext, useEffect, useState } from "react";
+interface ColorContext {
+  color: any;
+  setColor: React.Dispatch<React.SetStateAction<any>>;
+}
 
-  <!-- 子组件中使用 -->
-    import {TextContext} from '../Layout'
+export const ColorContext = createContext({} as ColorContext);
+export default function ColorProvider(props: any) {
+  const [color, setColor] = useState("#000000");
+  useEffect(
+    () => {
+      console.log("color>>>", color);
+    },
+    [color]
+  );
+  return (
+    <ColorContext.Provider
+      value={{
+        color,
+        setColor
+      }}
+    >
+      {props.children}
+    </ColorContext.Provider>
+  );
+}
+
+```
+
+
+```jsx
+// 导入ColorProvider，包裹子组件
+    <ColorProvider>
+      <div
+          className={`w-full h-full label px-[10px] py-[10px]  ${pattern.flexbet}`}
+        >
+        ...
+      </div>
+        
+    </ColorProvider>
+```
+
+```javascript
     <!--  消费 -->
+    import {TextContext} from '../Layout'
     console.log(useContext(TextContext))
-
-  ```
+```
 
 `useAsyncFn`
 通常处理异步请求函数
