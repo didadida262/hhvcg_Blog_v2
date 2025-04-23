@@ -1,5 +1,5 @@
 ---
-title: Rust系列：第一回*
+title: Rust系列*
 date: 2024-08-02 08:28:24
 category: Rust系列
 ---

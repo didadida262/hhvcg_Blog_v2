@@ -1,5 +1,5 @@
 ---
-title: 玩具Reactjs系列：第二回(concurrentmode、fiber)
+title: React系列：第九回(concurrentmode、fiber)
 date: 2024-04-23 00:18:07
 category: React系列
 
@@ -7,7 +7,7 @@ category: React系列
 
 **本文介绍，react快速渲染的原理**
 
-### 如何避免卡死？
+#### 如何避免卡死？
 
 在第一回中，我们通过手撕`myCreateElement`和`myRender`实现了基本的功能，但是仔细观察下之前写的render，是否存在什么问题？
 
@@ -80,7 +80,7 @@ react的底层并未通过`timeRemaining`获取剩余时间，而是自创了一
 流程：
 <img src="/img/玩具react2_3.png" alt="">
 
-根本思路: **借助requestIdleCallback，将之前render的这个大的任务打碎，然后见缝插针式的执行**
+**总体思路**: 为了避免渲染时dom过深，导致耗时过长甚至卡死， 借助requestIdleCallback，将之前render做的事情，分开执行。当前浏览器是否空闲（即有无剩余时间），有，则判断当前是否存在下一个任务单元，有则执行。执行过程中，无时间了，打断，有则继续执行。直至最后完毕。
 
 #### Fiber
 fiber也是一种数据结构，类似vnode
@@ -185,3 +185,4 @@ const myRender = (element, container) => {
 
 
 总体的逻辑就是：**一个节点一个节点的往深处走，创建dom，添加父亲兄弟节点信息，走到尽头，在一步步的往回收缩的走，直到扫完所有节点，最终回到跟节点**
+注意：react的底层实现中，因为存在兼容性的问题，并没有用**requestIdleCallback**，而是用的自己实现了的一套工具。
