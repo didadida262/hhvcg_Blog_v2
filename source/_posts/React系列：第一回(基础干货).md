@@ -17,6 +17,11 @@ React仅仅是一个UI库。官方对`React`的定义为：
 > 用于构建用户界面的 JavaScript 库。
 其根基思想就是 `数据驱动视图`
 
+
+`整体逻辑如下：`
+<img src="/img/react1_1.png" alt="">
+
+
 ### jsx语法
 ```javascript
 const Example = () => {
@@ -27,11 +32,18 @@ const Example = () => {
   );
 }
 ```
-`HTML 中夹杂着看似 JavaScript 的语句在其中`,称之为jsx语法，它是`对 JavaScript 语法的扩展，也能看做React.createElement的语法糖`。其中的React.createElement做的事情很清晰，他有三个参数type、config和children。顾名思义，分别代表节点类型如`div`、节点所有属性如`className`和节点的子节点。就是说以jsx文件代码为输入，编译生成虚拟dom，然后通过render方法生成真实的dom节点。
-jsx 看起来有点像模板语言，但是他又具有 JavaScript 的全部功能。类似于vue中的模版语法，这些机制设计的目的只有一个：`关注点分离, 简化程序的开发和维护`。
+`HTML 中夹杂着看似 JavaScript 的语句在其中`,称之为jsx语法，它是`对 JavaScript 语法的扩展，本质是React.createElement的语法糖`。其中的React.createElement做的事情很清晰，他有三个参数type、config和children。顾名思义，分别代表节点类型如`div`、节点所有属性如`className`和节点的子节点。就是说以jsx文件代码为输入，编译生成虚拟dom，然后通过render方法生成真实的dom节点。
 
-**贴一张react的渲染逻辑图，跟vue如出一辙。**
-<img src="/img/react框架流程.jpg" alt="">
+
+### 渲染逻辑
+贴一张react的渲染逻辑图。
+<img src="/img/react1_2.png" alt="">
+
+#### react15部分
+<img src="/img/react1_3.png" alt="">
+
+**注意点：`componentWillReceiveProps`生命周期钩子的触发，并非是props发生变化，而是只要父组件更新，子组件的该生命周期钩子都会触发**
+
 
 ### 条件渲染，类似于vue中的v-if，jsx 中的写法如下：
 ```javascript
@@ -75,6 +87,7 @@ root.render(
 );
 
 export default App;
+
 ```
 上面的代码中，我们写了一个函数组件，搭配ts定义了该组件的Props类型。
 
