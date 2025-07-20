@@ -548,8 +548,8 @@ export default function ColorProvider(props: any) {
 
 ```javascript
     <!--  消费 -->
-    import {TextContext} from '../Layout'
-    console.log(useContext(TextContext))
+    import {ColorContext} from '../Layout'
+    console.log(useContext(ColorContext))
 ```
 
 `useAsyncFn`
