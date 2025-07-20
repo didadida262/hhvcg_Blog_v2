@@ -42,7 +42,20 @@ const Example = () => {
 #### react15部分
 <img src="/img/react1_3.png" alt="">
 
-**注意点：`componentWillReceiveProps`生命周期钩子的触发，并非是props发生变化，而是只要父组件更新，子组件的该生命周期钩子都会触发**
+**注意点**
+1. `componentWillReceiveProps`生命周期钩子的触发，并非是props发生变化，而是只要父组件更新，子组件的该生命周期钩子都会触发
+2. 通常会在`shouldComponentUpdate`中写逻辑函数，用来决定是否`re-render`
+
+#### react16.3
+`初始化`
+<img src="/img/react1_4.png" alt="">
+
+`更新`
+<img src="/img/react1_5.png" alt="">
+
+1. 为什么用`getDerivedStateFromProps`代替`componentWillReceiveProps`
+**只用getDerivedStateFromProps完成props道state的映射**
+
 
 
 ### 条件渲染，类似于vue中的v-if，jsx 中的写法如下：
