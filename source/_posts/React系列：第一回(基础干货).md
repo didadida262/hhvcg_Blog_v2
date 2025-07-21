@@ -504,7 +504,7 @@ useLayoutEffect是在所有dom变更之后`同步调用`。重点就在于这个
 
 ```jsx
 // 定义一个context文件，暴露组件及context
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react"; 
 interface ColorContext {
   color: any;
   setColor: React.Dispatch<React.SetStateAction<any>>;
