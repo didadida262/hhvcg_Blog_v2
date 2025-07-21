@@ -82,7 +82,15 @@ react的底层并未通过`timeRemaining`获取剩余时间，而是自创了一
 
 **总体思路**: 为了避免渲染时dom过深，导致耗时过长甚至卡死， 借助requestIdleCallback，将之前render做的事情，分开执行。当前浏览器是否空闲（即有无剩余时间），有，则判断当前是否存在下一个任务单元，有则执行。执行过程中，无时间了，打断，有则继续执行。直至最后完毕。
 
-#### Fiber
+#### Fiber架构。其核心：可中断、可恢复、优先级
+
+`Fiber架构对生命周期的影响`
+<img src="/img/react9_1.png" alt="">
+
+
+
+
+
 fiber也是一种数据结构，类似vnode
 在vue中，`vnode --> 真实dom`
 在react中， `vnode（ReactElement） --> fiber ---> 真实dom`
@@ -180,7 +188,7 @@ const myRender = (element, container) => {
 ```
 
 #### 效果如下
-
+  
 <img src="/img/玩具react2_5.gif" alt="">
 
 
