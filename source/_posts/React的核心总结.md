@@ -34,7 +34,7 @@ category: React系列
 4. `组合优于继承`
 5. 类组件通过`shouldComponentUpdate`阻断渲染，函数组件通过React.memo
 6. 解耦业务逻辑和生命周期
-7. 有无this
+7. 有无this 
 
 
 **五. 设计react组件**
