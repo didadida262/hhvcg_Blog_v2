@@ -5,4 +5,4 @@ category: React系列
 ---
 
 
-### 本在在前文实现了commit的基石之上，我们可以更进一步，进入到更新阶段，reconciliation
+### 调和过程和diff
