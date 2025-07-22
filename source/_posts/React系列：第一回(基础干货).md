@@ -499,7 +499,7 @@ export default TestPage;
 ```
 
 `useCallback`
-对函数方法的缓存，减少不必要的函数创建，减少渲染次数，优化性能
+对函数方法的缓存，减少不必要的函数创建，优化性能
 
 ```javascript
 import React, { useCallback,useRef, forwardRef, useImperativeHandle, useState, useMemo, memo } from "react"
