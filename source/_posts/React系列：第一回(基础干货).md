@@ -399,7 +399,7 @@ export default function HomeComponent() {
 
 
 `useMemo`
-避免变量的无意义的多次渲染，只有当依赖的值（第二个参数）发生变化时，才会重新计算。避免重复计算，缓存计算结果。代码如下：
+对函数值的缓存，只有当依赖的值（第二个参数）发生变化时，才会重新计算。避免重复计算，缓存计算结果。代码如下：
 ```javascript
 import React, { useState, useMemo } from 'react';
 
@@ -601,7 +601,7 @@ export default function ColorProvider(props: any) {
 ```
 
 `useAsyncFn`
-通常处理异步请求函数
+无需手动管理 loading、error 等状态,简化异步操作的处理逻辑,同时还可以自动处理并发请求（新请求会取消旧请求）
 ```javascript
   const [loading, test] = useAsyncFn(async () => {
     const p = new Promise((resolve, reject) => {
