@@ -401,47 +401,102 @@ export default function HomeComponent() {
 `useMemo`
 有点vue中的`计算属性`的味道。其本质就是会对计算结果进行缓存，只有当依赖的值（第二个参数）发生变化时，才会重新计算。避免重复计算，缓存计算结果。代码如下：
 ```javascript
-import React, { useRef, forwardRef, useImperativeHandle, useState, useMemo } from "react"
-// import { useState, useReducer } from "react"
-import { Button } from 'antd'
+import React, { useState, useMemo } from 'react';
 
-const Child = ({value}) => {
-    // const result = value + '+ aloha'
-  const result = useMemo(() => {
-    console.log('子组建更新', value)
-    const res = value + '+ aloha'
-    return res
-  }, [value])
-  return <div>
-    子组建： { result }
-  </div>
-}
+const TestPage = () => {
+  const [number, setNumber] = useState(0);
+  const [darkMode, setDarkMode] = useState(false);
 
-const AboutComponent = () => {
-  const [count, setcount] = useState(0)
-  const [value, setvalue] = useState('hhvcg')
-  console.log('父组建更新')
+  // 使用useMemo缓存计算结果
+  // 只有当number变化时，才会重新计算
+  const squaredNumber = useMemo(() => {
+    console.log('进行了昂贵的计算...');
+    // 模拟一个计算开销较大的操作
+    let result = 0;
+    for (let i = 0; i < 100000000; i++) {
+      result = number * number;
+    }
+    return result;
+  }, [number]); // 依赖数组，只有number变化时才重新计算
 
-  const childRef = useRef() as any
-  const handleClick = (type) => {
-    setcount(count+1)
-  }
-  const handleClick2 = (type) => {
-    setvalue(value + 1)
-  }
+  // 切换主题的样式
+  const themeStyles = {
+    backgroundColor: darkMode ? 'black' : 'white',
+    color: darkMode ? 'white' : 'black',
+    padding: '20px',
+    margin: '20px'
+  };
+
   return (
-    <div>
-      <span>{count}</span>
-      <Button onClick={handleClick}>按钮1</Button>
-      <Button onClick={handleClick2}>按钮2</Button>
-      <Child value={value}/>
+    <div style={themeStyles}>
+      <h1>使用useMemo优化计算</h1>
+      <input
+        type="number"
+        value={number}
+        onChange={(e) => setNumber(parseInt(e.target.value))}
+      />
+      <button onClick={() => setDarkMode(!darkMode)}>
+        切换主题
+      </button>
+      <p>数字的平方: {squaredNumber}</p>
     </div>
-  )
-}
+  );
+};
 
-export default AboutComponent
+export default TestPage;
 ```
-上面代码中，我们对result的计算过程做了缓存。只有当value变化的时候，我们才重新执行计算逻辑。倘若不用这个hook，父组建的任何状态改变，都会出发重新计算的逻辑。react中还有一个`React.memo`,也能实现我们的这个场景，就是只有当props变化的时候，才会重新渲染，否则使用记忆数据。`注意，不能是引用类型, 引用类型只要变化都会触发re-render，即使memo的那个纯组件没用到具体的值`。两者没什么优劣之分。`最佳实践`： 组件导出时直接React.memo(组件)。
+当我们点击 "切换主题" 按钮时，虽然组件会重新渲染，但由于 number 没有变化，useMemo 会直接返回缓存的结果，避免了不必要的计算.
+
+**每次切换主题都进行计算的版本**
+
+```javascript
+import React, { useState, useMemo, useEffect } from 'react';
+
+const TestPage = () => {
+  const [number, setNumber] = useState(0);
+  const [darkMode, setDarkMode] = useState(false);
+
+  // 直接在组件渲染过程中执行计算
+  // 每次组件重新渲染时都会执行，包括切换主题时
+  console.log('进行计算...');
+  let result = 0;
+  // 模拟一个计算开销较大的操作
+  for (let i = 0; i < 100000000; i++) {
+    result = number * number;
+  }
+  const squaredNumber = result;
+
+  const themeStyles = {
+    backgroundColor: darkMode ? 'black' : 'white',
+    color: darkMode ? 'white' : 'black',
+    padding: '20px',
+    margin: '20px',
+    minHeight: '200px'
+  };
+
+  return (
+    <div style={themeStyles}>
+      <h1>不使用useMemo和useEffect的情况</h1>
+      <input
+        type="number"
+        value={number}
+        onChange={(e) => setNumber(parseInt(e.target.value) || 0)}
+        style={{ marginBottom: '10px', padding: '5px' }}
+      />
+      <button 
+        onClick={() => setDarkMode(!darkMode)}
+        style={{ padding: '5px 10px', marginBottom: '10px' }}
+      >
+        切换主题
+      </button>
+      <p>数字的平方: {squaredNumber}</p>
+      <p>注意: 每次点击切换主题按钮都会触发重新计算</p>
+    </div>
+  );
+};
+
+export default TestPage;
+```
 
 `useCallback`
 对函数方法的缓存，减少不必要的函数创建，减少渲染次数，优化性能
