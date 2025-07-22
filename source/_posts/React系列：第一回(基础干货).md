@@ -54,7 +54,7 @@ const Example = () => {
 <img src="/img/react1_5.png" alt="">
 
 1. 为什么用`getDerivedStateFromProps`代替`componentWillReceiveProps`
-**只用getDerivedStateFromProps完成props道state的映射**
+**只用getDerivedStateFromProps完成props到state的映射**
 
 
 
@@ -374,44 +374,29 @@ export default AboutComponent
 个人感觉，其功能在于抽逻辑代码。
 
 `useRef`
-通过这个hook，可以帮助我们调用子组件方法 
-
+跟dom元素相关，例如我们需要等待页面渲染完dom后做一些其他的事情，如挂载canvas画布等，就可以这么玩：
 
 ```javascript
-import React, { useRef, forwardRef, useImperativeHandle } from "react"
-// import { useState, useReducer } from "react"
-import { Button } from 'antd'
+import Me from '@/components/Me'
+import { useEffect, useRef } from 'react';
 
-const Child = forwardRef((props, ref) => {
-  useImperativeHandle(ref, () => ({
-    fn: () => {
-      console.log('fn>>>>>>')
+
+export default function HomeComponent() {
+  const child = useRef(null)
+
+  useEffect(() => {
+    if(child.current) {
+      console.log('child>>>>', child)
     }
-  }))
-  return <div>子组建</div>
-})
 
-const AboutComponent = () => {
-  // const count = useRef(0)
-  const childRef = useRef() as any
-  const handleClick = (type) => {
-    childRef.current.fn()
- 
-  }
-  return (
-    <div>
-      <span>about</span>
-      <Button onClick={handleClick}>按钮</Button>
-      <Child ref={childRef}/>
-
-    </div>
-  )
+  }, [child])
+  return <div ref={child} className="w-full h-full text-[50px] bg-gradient-to-t from-[#243b55] to-[#141e30]">
+    <Me/>
+  </div>;
 }
 
-export default AboutComponent
 ```
 
-还需要借助forwardRef和useImperativeHandle，实现此需求
 
 `useMemo`
 有点vue中的`计算属性`的味道。其本质就是会对计算结果进行缓存，只有当依赖的值（第二个参数）发生变化时，才会重新计算。避免重复计算，缓存计算结果。代码如下：
