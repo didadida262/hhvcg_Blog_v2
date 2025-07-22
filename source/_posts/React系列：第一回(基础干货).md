@@ -399,7 +399,7 @@ export default function HomeComponent() {
 
 
 `useMemo`
-有点vue中的`计算属性`的味道。其本质就是会对计算结果进行缓存，只有当依赖的值（第二个参数）发生变化时，才会重新计算。避免重复计算，缓存计算结果。代码如下：
+避免变量的无意义的多次渲染，只有当依赖的值（第二个参数）发生变化时，才会重新计算。避免重复计算，缓存计算结果。代码如下：
 ```javascript
 import React, { useState, useMemo } from 'react';
 
