@@ -22,7 +22,7 @@ category: React系列
 
 render做的事情很清晰，就是**根据element的信息，生成真实的dom然后挂载**，对于其中的子节点，我们只是粗暴的递归之。设想一下，如果我们传入的是一个巨深的虚拟dom，那么会发生什么？render这个函数的耗时势必也会剧增,`一旦开始执行，就会执行到底`。即：从首次执行render开始到最终结束，期间的浏览器都是处于阻塞的状态。此时是无法响应任何用户的操作的。俗称`卡死`。
 
-那么react底层是如何做优化的呢？答案也很清晰，利用一个api：`requestIdleCallback`.
+那么react底层是如何做优化的呢？答案也很清晰，利用一个类似api`requestIdleCallback`的效果，异步执行.
 
 #### requestIdleCallback
 该函数的作用，就是能够观察浏览器在处理完每帧的工作之后，是否存在空余时间。如果有，就执行requestIdleCallback的回调，没有，则忽略。
