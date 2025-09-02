@@ -1,7 +1,7 @@
 ---
 title: Canvas系列：windows泡泡屏保
 date: 2023-11-22 20:27:23
-category: 前端游戏杂谈
+category: 游戏杂谈
 ---
 
 ### 本文尝试用原生canvas实现windows的泡泡屏保效果，基于vue3框架
