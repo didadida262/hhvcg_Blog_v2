@@ -77,6 +77,125 @@ GunController.cs文件直接拖入player这个刚体中绑定，就是那个大�
 <img src="/img/unity2_2.gif" alt="图片描述" width="500">
 
 
-
 #### 子弹射击
+1. 创建子弹代码。
+```cs
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
+public class ProjectTile : MonoBehaviour
+{
+    float speed = 10;
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+    }
+}
+
+```
+
+2. 修改Gun文件
+```cs
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Gun : MonoBehaviour
+{
+    public Transform muzzle;
+    public ProjectTile projecttile;
+    public float msBetweenShots = 100;
+    public float muzzleVelocity = 35;
+    float nextShootTime;
+    public void Shoot() {
+        if (Time.time > nextShootTime) {
+            nextShootTime = Time.time + msBetweenShots / 1000;
+            ProjectTile newProjectTile = Instantiate(projecttile, muzzle.position, muzzle.rotation);
+            newProjectTile.SetSpeed(muzzleVelocity);
+        }
+    }
+
+    
+}
+
+```
+
+3. 捕获鼠标左键点击
+```cs
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using UnityEngine;
+
+[RequireComponent(typeof(PlayerController))]
+[RequireComponent(typeof(GunController))]
+public class Player : MonoBehaviour
+{
+    public float moveSpeed = 5;
+    public Camera mainCamera; // 在Inspector中拖入主相机
+    PlayerController controller;
+    GunController gunController;
+
+    void Start()
+    {
+        controller = GetComponent<PlayerController>();
+        gunController = GetComponent<GunController>();
+        // 自动获取主相机（如果没手动拖入）
+        if (mainCamera == null)
+            mainCamera = Camera.main;
+    }
+
+
+    void Update()
+    {
+   ...
+   ...
+        // weapon
+        if (Input.GetMouseButton(0))
+        {
+            gunController.Shoot();
+        }
+
+
+    }
+...
+...
+}
+    
+```
+
+4. 修改guncontrol
+```cs
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GunController : MonoBehaviour
+{
+    public Transform weaponHold;
+    public Gun startingGun;
+    Gun equippedGun;
+...
+...
+    public void Shoot()
+    {
+
+        if (equippedGun != null)
+        {
+            equippedGun.Shoot();
+        }
+    }
+
+}
+
+```
+
+最终效果：
+
+<img src="/img/unity2_3.gif" alt="图片描述" width="500">
