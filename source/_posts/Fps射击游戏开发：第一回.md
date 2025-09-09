@@ -132,18 +132,24 @@ public class PlayerController : MonoBehaviour
 <img src="/img/unity1_3.gif" alt="图片描述" width="500">
 
 
-#### 常用快捷键
+#### 其他的一些先验信息
 
+`常用快捷键`
 W 键：移动模式（控制位置）
 E 键：旋转模式（控制角度）
 R 键：缩放模式（控制大小）
 
+`生命周期`
+没错，跟vue、react类似，unity也有生命周期的概念。
+- Awake()：最早执行，在脚本被加载时立即调用（无论是否启用）。
+- Start()：在当前帧的 Update 之前执行，但仅在脚本启用时调用，且只执行一次。
+- FixedUpdate()：固定时间间隔调用（默认 0.02 秒 / 次，可在 Edit → Project Settings → Time 中修改）
+- Update()：每帧调用一次，执行频率取决于设备性能（帧率高则调用频繁）。
+- LateUpdate()：每帧在 Update 之后调用。
+- OnGUI()：每帧多次调用（响应 GUI 事件时），用于绘制 Unity 旧版 IMGUI 界面（如调试按钮、简单菜单）。
+
+执行顺序固定：从 Awake → Start → 各类 Update → 销毁方法，顺序严格不变。
+帧更新区分：FixedUpdate（物理）→ Update（逻辑）→ LateUpdate（跟随）→ OnGUI（UI）。
 
 
 
-
-<!-- 
-#### unity的生命周期
-
-`transform`： 集“位置、旋转、缩放” 这三个基本属性为一体的存在，通过它能获取到当前刚体的这几个属性。
-`Rigidbody`：刚体类型。Unity 物理系统的核心模块之一，专门用于处理游戏对象的物理行为（如重力、碰撞、运动受力等），开发者无需手动编写其底层逻辑，直接调用即可。 -->
