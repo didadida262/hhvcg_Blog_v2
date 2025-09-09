@@ -26,7 +26,9 @@ category: 游戏杂谈
 #### 给圆柱体绑定c#代码
 创建scripts文件夹专门存放代码文件，然后选中物体，将c#文件直接拖入inspector中绑定。代码文件具体如下。
 
+`palyer.cs`
 ```c#
+
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -84,6 +86,7 @@ public class Player : MonoBehaviour
     
 ```
 
+`PlayerController.cs`
 
 ```c#
 using System.Collections;
@@ -127,6 +130,13 @@ public class PlayerController : MonoBehaviour
 现阶段效果如下：
 
 <img src="/img/unity1_3.gif" alt="图片描述" width="500">
+
+
+#### 常用快捷键
+
+W 键：移动模式（控制位置）
+E 键：旋转模式（控制角度）
+R 键：缩放模式（控制大小）
 
 
 
