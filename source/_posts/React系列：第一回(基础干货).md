@@ -23,16 +23,22 @@ React仅仅是一个UI库。官方对`React`的定义为：
 
 
 ### jsx语法
+
+`JavaScript 中夹杂着 HTML 的语句在其中`,称之为jsx语法，它是`对 JavaScript 语法的扩展，本质是React.createElement的语法糖`。其中的React.createElement做的事情很清晰，他有三个参数type、config和children。顾名思义，分别代表节点类型如`div`、节点所有属性如`className`和节点的子节点。就是说以jsx文件代码为输入，编译生成虚拟dom，然后通过render方法生成真实的dom节点。
+
+`为了生成虚拟dom，两种写法`
+
 ```javascript
-const Example = () => {
-  return (
-    <div>
-      Hello {props.name}
-    </div>
-  );
-}
+// jsx
+const element = <h1 className="title">Hello, React</h1>;
+
+// React.createElement
+const element = React.createElement(
+  'h1',                // 标签名/组件
+  { className: 'title' },  // 属性（props）
+  'Hello, React'       // 子元素（children）
+);
 ```
-`HTML 中夹杂着看似 JavaScript 的语句在其中`,称之为jsx语法，它是`对 JavaScript 语法的扩展，本质是React.createElement的语法糖`。其中的React.createElement做的事情很清晰，他有三个参数type、config和children。顾名思义，分别代表节点类型如`div`、节点所有属性如`className`和节点的子节点。就是说以jsx文件代码为输入，编译生成虚拟dom，然后通过render方法生成真实的dom节点。
 
 
 ### 渲染逻辑
