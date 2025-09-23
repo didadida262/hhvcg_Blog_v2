@@ -173,9 +173,9 @@ This blog uses the **Butterfly** theme with extensive customizations:
 
 <div align="center">
 
-### 🔗 **[Visit the Live Blog](https://hhvcg-blog.vercel.app/)**
+### 🔗 **[Visit the Live Blog](https://hhvcg-blog-v2.vercel.app/)**
 
-[![Live Demo](https://img.shields.io/badge/🌐%20Live%20Demo-Visit%20Now-brightgreen?style=for-the-badge&logo=vercel)](https://hhvcg-blog.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/🌐%20Live%20Demo-Visit%20Now-brightgreen?style=for-the-badge&logo=vercel)](https://hhvcg-blog-v2.vercel.app/)
 
 </div>
 
@@ -206,7 +206,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ### **Miles｜佚心**
 
 [![GitHub](https://img.shields.io/badge/GitHub-didadida262-181717?style=for-the-badge&logo=github)](https://github.com/didadida262)
-[![Blog](https://img.shields.io/badge/Blog-Visit%20My%20Blog-blue?style=for-the-badge&logo=blogger)](https://hhvcg-blog.vercel.app/)
+[![Blog](https://img.shields.io/badge/Blog-Visit%20My%20Blog-blue?style=for-the-badge&logo=blogger)](https://hhvcg-blog-v2.vercel.app/)
 
 *"致敬仰望星空的人们" - Saluting those who look up at the stars*
 
