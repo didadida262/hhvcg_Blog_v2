@@ -25,4 +25,4 @@ AI模型：
 
 <img src="/img/ai2_1.gif" alt="图片描述">
 
-注意，其中用到的模型`all-MiniLM-L6-v2`和` gemma3:4b`，需要本地自行下载。代码详情见[Vercel部署地址](https://github.com/didadida262/project_Local_Knowledge_Base)
+注意，其中用到的模型`all-MiniLM-L6-v2`和` gemma3:4b`，需要本地自行下载。代码详情见[git地址](https://github.com/didadida262/project_Local_Knowledge_Base)
