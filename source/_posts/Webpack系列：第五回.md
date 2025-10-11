@@ -284,7 +284,6 @@ npx webpack-bundle-analyzer dist/bundle.js
 
 ### Tree Shaking
 #### Bundle 体积对比
-
 | 指标 | 优化前 | 优化后 | 减少 |
 |------|--------|--------|------|
 | **vendors.js** | 548.43 KB | 241.67 KB | **306.76 KB (56%)** ↓ |
@@ -292,11 +291,10 @@ npx webpack-bundle-analyzer dist/bundle.js
 | **总体 JS** | 604 KB | 298 KB | **306 KB (51%)** ↓ |
 
 #### 关键改进
-
-✅ **vendor bundle 减少 56%**  
-✅ **未使用代码完全移除**  
-✅ **Scope Hoisting 优化**  
-✅ **导出名称混淆**
+- vendor bundle 减少 56%  
+- 未使用代码完全移除  
+- Scope Hoisting 优化  
+- 导出名称混淆
 ---
 
 
