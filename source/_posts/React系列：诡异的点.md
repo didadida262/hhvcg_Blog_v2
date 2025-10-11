@@ -6,7 +6,10 @@ category: React系列
 
 ### 本文重点罗列一些react中，令人诡异的点
 
-1. **setstate改变值后，打印出来的，居然还是旧的值**
+
+
+
+### setstate改变值后，打印出来的，居然还是旧的值
 看如下代码：
 ```javascript
 const AboutComponent = () => {
@@ -25,14 +28,12 @@ const AboutComponent = () => {
 }
 ```
 点击按钮变更count， 打印出来的count的值: count>> 0
-**...写了两三年vue的我表示：what？**
-解释： `在组件生命周期或者react合成事件中，状态的更新是异步的，在settimeout或者原生dom事件中，setState是同步的。setcount的调用是同步的，所以打印出来的count的值，还是0`
-注意：同时多次调用setstate修改状态值，取最后一次的执行结果，因为是批量更新的。定时器中状态变更后可以同步显示，但是react18中，也被设计为异步。这是react的一个特性，也是react的坑。
+**...写了两三年vue的我表示：what？setstate到底是同步的，还是异步的，开始一波调研**
 
 <img src="/img/reactgui_1.png" alt="">
 
 
-那么为什么要设计出这种坑呢？`避免多次render`。可以将setstate这种操作看成是异步的，比如通过setstate改变了某个状态，但是这个改变的任务，会被塞入一个异步队列中，然后继续执行后面的代码，当所有代码执行完毕之后，再从队列中批量执行更新的操作，最后render页面。
+通过setstate改变了某个状态，但是这个改变的任务，会被塞入一个异步队列中，然后继续执行后面的代码，当所有代码执行完毕之后，再从队列中批量执行更新的操作，最后render页面。
 
 那么现在我有个强烈的需求，我就是要在更新完state之后，获取最新的值，怎么破？
 1. 函数式组件中，可以给setstate一个回调作为其第二个参数，在回调中可以获取更新之后的值
@@ -46,7 +47,35 @@ const AboutComponent = () => {
 ```
 
 
-**2. 父子组件通信问题**
+```javascript
+this.setState({ x: 5 });
+console.log(this.state.x);  // 可能还打印旧值
+...
+...
+setTimeout(() => {
+  this.setState({ x: 10 });
+  console.log(this.state.x);  // 很可能是新的值，因为脱离 React 批处理环节
+});
+
+```
+`总结：`**你还能说啥，对于开发而言，统一默认是异步的（不用争执了，毫无意义）。**
+
+**小细节的补充**：下面代码的两种写法的区别？
+```javascript
+  const handleStateClick = () => {
+    console.log('handleStateClick')
+    setCount(count + 1)
+    setCount((prev) => prev + 1)
+    console.log('count>>>', count)
+  }
+```
+setCount(count + 1)：拿你当前作用域里 count 的值，加 1 后设置状态；
+setCount(prev => prev + 1)：等到 React 执行这个 updater 函数的时候，再把“那时的最新状态”作为 prev 传入，返回新的状态值。
+
+
+
+
+### 父子组件通信问题
 `场景`： 子组件A通过props获取父组件传过来的data数据渲染页面。同时，另一个子组件B通过事件告知父组件更新data数据，子组件A更新视图。
 `出现的问题`：第一次在b组件触发更新数据的操作，没问题。之后就不行。
 
