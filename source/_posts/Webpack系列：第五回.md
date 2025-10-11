@@ -323,6 +323,7 @@ npx webpack-bundle-analyzer dist/bundle.js
 
 ---
 
+更加详细的配置，移步项目仓库https://github.com/didadida262/project_webpack
 **此文终结。**
 
 
