@@ -212,3 +212,11 @@ abcjs_basic_js:
   name: abcjs
   file: dist/abcjs-basic-min.js
   version: 6.2.2
+statistics_51la:
+  name: statistics-51la
+  file: statistics-51la.js
+  version: 1.0.0
+local_stats:
+  name: local-stats
+  file: local-stats.js
+  version: 1.0.0

@@ -17,16 +17,42 @@ if theme.aside.card_webinfo.enable
         .webinfo-item
           .item-name=_p('aside.card_webinfo.site_wordcount') + " :"
           .item-count=totalcount(site)
-      if theme.busuanzi.site_uv
+      if theme.statistics_51la.enable
+        .webinfo-item
+          .item-name= _p('aside.card_webinfo.site_uv_name') + " :"
+          .item-count#51la_site_uv
+            i.fa-solid.fa-spinner.fa-spin
+        .webinfo-item
+          .item-name= _p('aside.card_webinfo.site_pv_name') + " :"
+          .item-count#51la_site_pv
+            i.fa-solid.fa-spinner.fa-spin
+      else if theme.local_statistics.enable
+        .webinfo-item
+          .item-name= _p('aside.card_webinfo.site_uv_name') + " :"
+          .item-count#local_site_uv
+            i.fa-solid.fa-spinner.fa-spin
+        .webinfo-item
+          .item-name= _p('aside.card_webinfo.site_pv_name') + " :"
+          .item-count#local_site_pv
+            i.fa-solid.fa-spinner.fa-spin
+      else if theme.busuanzi.site_uv
         .webinfo-item
           .item-name= _p('aside.card_webinfo.site_uv_name') + " :"
           .item-count#busuanzi_value_site_uv
             i.fa-solid.fa-spinner.fa-spin
-      if theme.busuanzi.site_pv
+      else if theme.busuanzi.site_pv
         .webinfo-item
           .item-name= _p('aside.card_webinfo.site_pv_name') + " :"
           .item-count#busuanzi_value_site_pv
             i.fa-solid.fa-spinner.fa-spin
+      else
+        // 所有统计服务都关闭时，显示"-"
+        .webinfo-item
+          .item-name= _p('aside.card_webinfo.site_uv_name') + " :"
+          .item-count -
+        .webinfo-item
+          .item-name= _p('aside.card_webinfo.site_pv_name') + " :"
+          .item-count -
       if theme.aside.card_webinfo.last_push_date
         .webinfo-item
           .item-name= _p('aside.card_webinfo.last_push_date.name') + " :"

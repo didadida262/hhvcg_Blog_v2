@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>本地统计测试</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-item { margin: 10px 0; padding: 10px; border: 1px solid #ccc; }
+        .loading { color: #666; font-style: italic; }
+        .success { color: #28a745; }
+        .error { color: #dc3545; }
+        .stats-display {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <h1>本地统计测试页面</h1>
+
+    <div class="test-item">
+        <h3>访客数 (UV):</h3>
+        <div id="local_site_uv" class="loading stats-display">加载中...</div>
+    </div>
+
+    <div class="test-item">
+        <h3>访问量 (PV):</h3>
+        <div id="local_site_pv" class="loading stats-display">加载中...</div>
+    </div>
+
+    <div class="test-item">
+        <h3>测试说明:</h3>
+        <p>这个页面使用本地存储来统计访问数据。每次刷新页面，PV会+1；如果是新访客，UV会+1。</p>
+        <p>数据存储在浏览器的localStorage中，可以通过开发者工具的Application > Local Storage查看。</p>
+    </div>
+
+    <div class="test-item">
+        <h3>调试信息:</h3>
+        <pre id="debug-info">正在初始化...</pre>
+    </div>
+
+    <!-- 引用本地统计脚本 -->
+    <script src="/js/local-stats.js"></script>
+
+    <script>
+        // 额外调试信息
+        const debugInfo = document.getElementById('debug-info');
+
+        // 检查localStorage中的数据
+        setTimeout(() => {
+            const stats = localStorage.getItem('site_stats');
+            if (stats) {
+                debugInfo.textContent = 'LocalStorage中的统计数据:\n' + stats;
+            } else {
+                debugInfo.textContent = 'LocalStorage中还没有统计数据（这是第一次访问）';
+            }
+        }, 1000);
+
+        // 监控统计数据的更新
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'childList' || mutation.type === 'characterData') {
+                    const uvElement = document.getElementById('local_site_uv');
+                    const pvElement = document.getElementById('local_site_pv');
+
+                    if (uvElement && uvElement.textContent && uvElement.textContent !== '加载中...') {
+                        uvElement.className = 'stats-display success';
+                    }
+                    if (pvElement && pvElement.textContent && pvElement.textContent !== '加载中...') {
+                        pvElement.className = 'stats-display success';
+                    }
+                }
+            });
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true,
+            characterData: true
+        });
+    </script>
+</body>
+</html>

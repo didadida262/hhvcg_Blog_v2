@@ -62,4 +62,16 @@ div
   if theme.busuanzi.site_uv || theme.busuanzi.site_pv || theme.busuanzi.page_pv
     script(async data-pjax src= theme.asset.busuanzi || '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js')
 
+  if theme.statistics_51la.enable
+    // 51la统计脚本
+    script.
+      document.write('<script language="javascript" src="https://js.users.51.la/' + '!{theme.statistics_51la.id}' + '.js"></script>');
+
+    // 51la数据处理脚本
+    script(src=url_for(theme.asset.statistics_51la || '/js/statistics-51la.js'))
+
+  if theme.local_statistics.enable
+    // 本地统计脚本
+    script(src=url_for(theme.asset.local_stats))
+
   !=partial('includes/third-party/search/index', {}, {cache: true})

@@ -270,11 +270,28 @@ aside:
     order: -1 # Sort of order. 1, asc for ascending; -1, desc for descending
 
 # busuanzi count for PV / UV in site
-# 訪問人數
+# 訪問人數 - 备用方案：使用51la统计
 busuanzi:
-  site_uv: true
-  site_pv: true
-  page_pv: true
+  site_uv: false
+  site_pv: false
+  page_pv: false
+
+# 51la统计配置 (推荐)
+statistics_51la:
+  enable: false
+  # 51la统计代码ID，替换为您的实际ID
+  id: "your_51la_id_here"
+
+# 百度统计配置 (可选)
+baidu_analytics:
+  enable: false
+  # 您的百度统计ID
+  id: "your_baidu_id_here"
+
+# 本地统计配置 (简单备用方案)
+local_statistics:
+  enable: false  # 暂时关闭所有统计服务，用"-"显示
+  # 如果您只想使用本地统计，可以将其他统计服务设为false
 
 # Time difference between publish date and now (網頁運行時間)
 # Formal: Month/Day/Year Time or Year/Month/Day Time
@@ -556,9 +573,6 @@ messenger:
 # Analysis
 # --------------------------------------
 
-# Baidu Analytics
-# https://tongji.baidu.com/web/welcome/login
-baidu_analytics:
 
 # Google Analytics
 # https://analytics.google.com/analytics/web/
