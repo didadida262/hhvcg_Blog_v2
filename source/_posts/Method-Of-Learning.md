@@ -1,7 +1,7 @@
 ---
 title: Method Of Learning
 date: 2025-07-18 19:03:32
-category: '杂谈'
+category: 'Miscellany'
 ---
 ### A study method that works for any discipline, language, or technical subject
 - `Step 1 - Preparation`: find an authoritative book that covers most of the fundamentals
