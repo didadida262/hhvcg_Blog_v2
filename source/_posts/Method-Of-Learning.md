@@ -1,14 +1,14 @@
 ---
 title: Method Of Learning
 date: 2025-07-18 19:03:32
-category:
+category: '杂谈'
 ---
-### 适用于任何专业学科、语言、技术等的攻破
-- `Step1前期准备`：一本权威的、囊括大部分基础内容的书籍
-- `Step2`：从头到尾快速阅读一轮。
-- `Step3`：寻找一位靠谱老师，过一遍课程,纠正理解错误的点。
-- `Step4`：按分块内容，逐步精读，车轮战。
-- `Step5`：一次终极测试，验证自己对所学内容的理解正确度。
-- `Step6`: 不断地车轮战，实践，输出，切记，**不要枉费自己，过去所有付出的时间**
+### A study method that works for any discipline, language, or technical subject
+- `Step 1 - Preparation`: find an authoritative book that covers most of the fundamentals
+- `Step 2`: skim through the whole book quickly once
+- `Step 3`: locate a reliable mentor, work through the course, and correct misunderstandings
+- `Step 4`: break the material into chunks, then study each deeply in cycles
+- `Step 5`: take a comprehensive test to verify you truly understand what you learned
+- `Step 6`: keep cycling—practice and produce output. Above all, **do not waste the time you invested in the past**
 
-所谓精通的成就达成，只有一点：**故跬步而不休，跛鳖千里；累土而不辍，丘山崇成。即：唯手熟尔**
+Mastery comes down to one rule: **keep taking steps without stopping, and even a lame tortoise can travel a thousand miles; pile up grains of earth and before long a hill stands tall. In other words: only practice makes perfect.**
