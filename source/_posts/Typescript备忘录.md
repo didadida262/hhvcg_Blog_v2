@@ -4,7 +4,7 @@ date: 2023-08-28 23:57:30
 category: 前端气宗专栏
 ---
 
-### 本文纯属ts的内容备忘录
+#### 本文纯属ts的内容备忘录
 **ts能干嘛？**将弱类型的js，变为强类型的语言。
 举例:
 ```javascript
@@ -17,7 +17,7 @@ fn([1,2,3,4])
 示例代码中，我们声明的msg是一个数组，但是我们通过类型注解，规定fn的参数应该是一个字符串，配合一些插件工具，显示报错。
 
 那么ts还有其他什么特性吗？
-1. 接口，一种声明的约束
+#### 接口，一种声明的约束
 ```javascript
 interface Role {
     name: string,
@@ -35,7 +35,7 @@ const role: Role = {
 ```
 同一类似，如果role的某些字段，类型同接口定义的不一致，会报错。同时写代码的时候，有字段提示的功能。如果说需要某些字段是可选的，加？即可。如果需要某些字段是只读的，加readonly。
 
-2. 数组与元组类型
+#### 数组与元组类型
 ```javascript
 // 数组
 const arr: number[] = [1,2,3,4]
@@ -46,7 +46,7 @@ const tuple: [number, string] = [1, 's']
 ```
 元组类型，跟对象有毛区别？？？感觉有点脱裤子那啥的味道
 
-3. 枚举
+#### 枚举
 ```javascript
 enum Role {
     police,
@@ -58,7 +58,8 @@ console.log(Role.police)
 ```
 没啥好说的，Role.police的值是0，默认0，1，2......
 
-4. implements.这个东西的作用，个人觉得还是一种约束，如下所示：
+#### implements
+这个东西的作用,个人觉得就是一种约束，如下所示：
 ```javascript
 interface Role {
     say()
@@ -89,7 +90,7 @@ class test2 implements all {
 }
 ```
 
-5. 继承
+#### 继承
 ```javascript
 class Person {
     name: string
@@ -112,15 +113,14 @@ class Student extends Person {
     }
 }
 ```
-6. 类型注解和编译时的类型检查
-7. type
+#### type
 ```javascript
 type some = number | string
 const x: some = 1
 ```
-其与接口的区别，后者只能够定义对象类型，而前者除了对象类型，还能用来定义交叉、联合类型等
+`其与接口的区别，后者只能够定义对象类型，而前者除了对象类型，还能用来定义交叉、联合类型等`
 
-**同js的区别**
+#### 同js的区别
 
 增加了新的数据类型： 
 any： 任意类型
