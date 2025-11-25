@@ -115,8 +115,24 @@ class Student extends Person {
 ```
 #### type
 ```javascript
+// 联合类型
 type some = number | string
 const x: some = 1
+...
+...
+...
+// 接口交叉：同时具备 User 和 Contact 的所有属性
+interface User {
+  id: number;
+  username: string;
+}
+
+interface Contact {
+  phone: string;
+  email: string;
+}
+
+type UserWithContact = User & Contact; // 交叉类型：User 且 Contact
 ```
 `其与接口的区别，后者只能够定义对象类型，而前者除了对象类型，还能用来定义交叉、联合类型等`
 
