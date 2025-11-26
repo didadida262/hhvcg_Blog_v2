@@ -95,6 +95,7 @@ function showName() {
     console.log(1)
 }
 showName()
+// 1 → 2
 ```
 无需解释了吧。
 
@@ -139,17 +140,10 @@ new Promise(function(resolve) {
 })
 console.log('H')
 //输出顺序如下
-//D
-//A
-//C
-//F
-//H
-//B
-//undefined
-//E
+// D → A → C → F → H → B → G → E
+
 
 ```
-注意：
-- await后面的代码会被当成微任务塞入队列
-- 并没有打印出`G`的原因在于，没有`resolve`
+`注意`
+- async/await 的本质是 Promise 的语法糖 ——await xxx 会先执行 xxx，然后将后续代码（await 之后的内容）放入微任务队列，暂停当前 async 函数，先执行后续同步代码。
 
