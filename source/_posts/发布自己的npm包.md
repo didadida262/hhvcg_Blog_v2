@@ -1,7 +1,7 @@
 ---
 title: 发布自己的npm包
 date: 2024-04-22 16:03:57
-category: 前端剑宗专栏
+category: 前端剑气双修专栏
 ---
 
 

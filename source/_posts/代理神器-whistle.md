@@ -1,7 +1,7 @@
 ---
 title: 代理神器-whistle
 date: 2024-02-23 16:11:52
-category: 前端剑宗专栏
+category: 前端剑气双修专栏
 ---
 
 ### 本文简单备注一下，whistle工具的使用

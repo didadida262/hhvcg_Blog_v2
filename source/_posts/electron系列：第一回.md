@@ -1,7 +1,7 @@
 ---
 title: electron系列：第一回
 date: 2023-11-16 16:49:08
-category: 前端剑宗专栏
+category: 前端剑气双修专栏
 ---
 
 ### 本系列开始，将逐步介绍前端的客户端经典框架--electron（系列文章）

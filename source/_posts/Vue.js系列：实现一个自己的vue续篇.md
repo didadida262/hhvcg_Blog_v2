@@ -1,6 +1,6 @@
 ---
 title: Vue.js系列：实现一个自己的vue续篇
-category: 前端剑宗专栏
+category: 前端剑气双修专栏
 date: 2023-08-09 10:30:11
 tags:
 ---

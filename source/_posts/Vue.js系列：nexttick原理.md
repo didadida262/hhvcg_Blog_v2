@@ -1,7 +1,7 @@
 ---
 title: Vue.js系列：nexttick原理
 date: 2023-11-17 16:44:57
-category: 前端剑宗专栏
+category: 前端剑气双修专栏
 ---
 
 ### 本文尝试梳理在vue中，nextTick方法的实现原理
