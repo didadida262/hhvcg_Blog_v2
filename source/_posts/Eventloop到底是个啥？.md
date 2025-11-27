@@ -31,3 +31,22 @@ category: 前端剑气双修专栏
 
 3. #### 为什么叫做Eventloop事件循环？
 通过上面的内容介绍，这个问题的答案，已经很明显了。主线程一旦空闲就会不停的问候事件队列，查看是否存在任务在等待。类比就是个`轮回循环`。
+
+
+补一个经典的微任务：dom监听器`MutationObserver`的使用示例
+```javascript
+    const textEl = document.getElementById('textEl');
+
+    // 监听文本变化
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        console.log('文本从「', mutation.oldValue, '」变成「', textEl.textContent, '」');
+      });
+    });
+
+    // 配置：监听文本变化 + 记录旧值
+    observer.observe(textEl, {
+      characterData: true, // 监听文本变化
+      characterDataOldValue: true // 记录变化前的旧文本
+    });
+```
