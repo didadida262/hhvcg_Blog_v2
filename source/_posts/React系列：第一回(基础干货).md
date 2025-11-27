@@ -341,6 +341,8 @@ function FriendStatusWithCounter(props) {
     setIsOnline(status.isOnline);
   }
 ```
+`关于useEffect差一个场景题`：现在有一个页面，有三个子组件的div，分别是a、b、c，那如果我现在通过代码改变了他们的顺序，比如b、a、c，子组件中useEffect(() => { ... }, [])会触发吗？
+答案当然是不会。useEffect(() => { ... }, []) 只有在组件首次挂载时运行一次，除非组件被卸载后重新挂载；它不会因为你在界面上调换 div 的顺序而自动触发。调整顺序只是 JSX 渲染层面的变化，不会让 React 认为组件重新挂载（前提是父组件本身没被重建）。
 
 
 `useReducer`
