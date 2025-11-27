@@ -15,7 +15,7 @@ category: React系列
 
 #### 二. 执行顺序
 
-1. 原生事件优先执行，合成事件后执行。子元素原生事件执行、父元素原生事件执行、子元素合成事件执行、父元素合成事件执行、document原生事件执行。
+1. 原生事件优先执行，合成事件后执行。`子元素原生事件执行、父元素原生事件执行、子元素合成事件执行、父元素合成事件执行、document原生事件`执行。
 2. 阻止合成事件间的冒泡: `e.stopPropagation()`；阻止合成事件与最外层document上事件的冒泡： `e.nativeEvent.stopImmediatePropagation()`
 
 
@@ -26,3 +26,6 @@ category: React系列
 #### 四：差异
 - 绑定方式：原生事件绑定在真实 DOM，React 事件绑定在虚拟 DOM
 - 执行机制：React 事件通过事件委托到 document 统一处理，原生是直接绑定
+
+#### 一些变化
+React 17 之前，合成事件的原生监听器绑定在 document 上；React 17 及之后，监听器绑定在 React 应用的「根容器节点」（如 ReactDOM.render(<App />, root) 中的 root 元素）。
