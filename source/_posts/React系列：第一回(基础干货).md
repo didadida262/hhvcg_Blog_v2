@@ -45,24 +45,6 @@ const element = React.createElement(
 贴一张react的渲染逻辑图。
 <img src="/img/react1_2.png" alt="">
 
-#### react15部分
-<img src="/img/react1_3.png" alt="">
-
-**注意点**
-1. `componentWillReceiveProps`生命周期钩子的触发，并非是props发生变化，而是只要父组件更新，子组件的该生命周期钩子都会触发
-2. 通常会在`shouldComponentUpdate`中写逻辑函数，用来决定是否`re-render`
-
-#### react16.3
-`初始化`
-<img src="/img/react1_4.png" alt="">
-
-`更新`
-<img src="/img/react1_5.png" alt="">
-
-1. 为什么用`getDerivedStateFromProps`代替`componentWillReceiveProps`
-**只用getDerivedStateFromProps完成props到state的映射**
-
-
 
 ### 条件渲染，类似于vue中的v-if，jsx 中的写法如下：
 ```javascript
@@ -112,13 +94,11 @@ export default App;
 
 react中的组件有两种方式：`函数组件和类组件`，目前公司业务普遍选择前者。
 **两者的区别**
-1. 两者作为组件一致，前者可以访问生命周期方法，后者不能
-2. 类组件的根基时oop，面向对象编程，函数组件的根基时fp，即函数式编程
-3. `类组件废话太多,后者简洁清晰`。view = f(...)
-4. `组合优于继承`
-5. 类组件通过`shouldComponentUpdate`阻断渲染，函数组件通过React.memo
-6. 解耦业务逻辑和生命周期
-7. 有无this 
+1. 两者作为组件一致，
+2. 类组件的根基时oop，面向对象编程，函数组件的根基时fp，即函数式编程,前者有this，后者无；前者可以访问生命周期方法，后者不能。
+3. 类组件通过`shouldComponentUpdate`阻断渲染，函数组件通过React.memo
+4. `组合优于继承`，函数组件低耦合逻辑代码包括生命周期，更加的灵活。
+
 
 几个函数组件的错误案例：
 ```javascript
@@ -304,7 +284,7 @@ state的变量不能直接修改，这是规则
 useEffect 就是一个 Effect Hook，给函数组件增加了操作副作用的能力。它跟 class 组件中的 componentDidMount(组件第一次渲染结束后触发)、componentDidUpdate（组件每次更新结束后触发） 和 componentWillUnmount（组件将要卸载的时候触发） 具有相同的用途，只不过被合并成了一个 API。
 即 useEffect 可以根据参数的不同配置，在组件不同的渲染时机被调用。useEffect 接受两个参数：`副作用函数`,`依赖项，类型是数组`
 ```javascript
-// 依赖项是空数组，第一次渲染结束后，调用一次
+// 依赖项是空数组，仅仅挂载和卸载时执行
 useEffect(() => {
     ...
 },[]);
@@ -341,8 +321,8 @@ function FriendStatusWithCounter(props) {
     setIsOnline(status.isOnline);
   }
 ```
-`关于useEffect差一个场景题`：现在有一个页面，有三个子组件的div，分别是a、b、c，那如果我现在通过代码改变了他们的顺序，比如b、a、c，子组件中useEffect(() => { ... }, [])会触发吗？
-答案当然是不会。useEffect(() => { ... }, []) 只有在组件首次挂载时运行一次，除非组件被卸载后重新挂载；它不会因为你在界面上调换 div 的顺序而自动触发。调整顺序只是 JSX 渲染层面的变化，不会让 React 认为组件重新挂载（前提是父组件本身没被重建）。
+`关于useEffect查一个场景题`：现在有一个页面，有三个子组件的div，分别是a、b、c，那如果我现在通过代码改变了他们的顺序，比如b、a、c，子组件中useEffect(() => { ... }, [])会触发吗？
+答案有两种，触发和不触发。useEffect(() => { ... }, []) 只有在组件挂载和卸载时触发。那么根据这个问题有两种情况，a、b、c无key时，就会触发。因为react底层执行判断是否为同一组件的条件是：`标签名和key`。因为没有key，那么改变后的组件a、b、c都会被判定为是新的实例。如果有key，就不会触发。
 
 
 `useReducer`
