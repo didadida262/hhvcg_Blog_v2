@@ -1,15 +1,12 @@
 ---
-title: React系列：诡异的点
+title: React系列：第四回(诡异的点)
 date: 2024-03-15 00:21:20
 category: React系列
 ---
 
-### 本文重点罗列一些react中，令人诡异的点
+#### 本文重点罗列一些react中，令人诡异的点
 
-
-
-
-### setstate改变值后，打印出来的，居然还是旧的值
+#### setstate改变值后，打印出来的，居然还是旧的值
 看如下代码：
 ```javascript
 const AboutComponent = () => {
@@ -33,7 +30,7 @@ const AboutComponent = () => {
 <img src="/img/reactgui_1.png" alt="">
 
 
-通过setstate改变了某个状态，但是这个改变的任务，会被塞入一个异步队列中，然后继续执行后面的代码，当所有代码执行完毕之后，再从队列中批量执行更新的操作，最后render页面。
+通过setstate改变了某个状态，但是这个改变的任务，会被塞入一个异步队列中，然后继续执行后面的代码，当所有代码执行完毕之后，再从队列中批量执行更新的操作，最后render页面。`简而言之，setstate是一部批量更新的，这就是为什么改变值后立刻打印，显示的是更新前的值。`
 
 那么现在我有个强烈的需求，我就是要在更新完state之后，获取最新的值，怎么破？
 1. 函数式组件中，可以给setstate一个回调作为其第二个参数，在回调中可以获取更新之后的值
@@ -46,19 +43,21 @@ const AboutComponent = () => {
     })
 ```
 
-
+再来一段：
 ```javascript
 this.setState({ x: 5 });
-console.log(this.state.x);  // 可能还打印旧值
+console.log(this.state.x);  // 输出：5
 ...
 ...
 setTimeout(() => {
   this.setState({ x: 10 });
-  console.log(this.state.x);  // 很可能是新的值，因为脱离 React 批处理环节
+  console.log(this.state.x);  // 输出：10
 });
 
 ```
-`总结：`**你还能说啥，对于开发而言，统一默认是异步的（不用争执了，毫无意义）。**
+setState是否是“异步批量更新”，取决于执行上下文是否被 React 控制。它仅在「React 可控的同步执行上下文」中（如事件处理函数、生命周期函数）才会批量延迟更新；若在「React 不可控的异步上下文」中（如 setTimeout、Promise.then、原生事件回调），setState 会 同步执行，立即更新状态。
+
+
 
 **小细节的补充**：下面代码的两种写法的区别？
 ```javascript
@@ -73,7 +72,7 @@ setCount(count + 1)：拿你当前作用域里 count 的值，加 1 后设置状
 setCount(prev => prev + 1)：等到 React 执行这个 updater 函数的时候，再把“那时的最新状态”作为 prev 传入，返回新的状态值。
 
 
-### 父子组件通信问题
+#### 父子组件通信问题
 `场景`： 子组件A通过props获取父组件传过来的data数据渲染页面。同时，另一个子组件B通过事件告知父组件更新data数据，子组件A更新视图。
 `出现的问题`：第一次在b组件触发更新数据的操作，没问题。之后就不行。
 
