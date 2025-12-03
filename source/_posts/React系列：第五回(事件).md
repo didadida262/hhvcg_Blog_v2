@@ -28,4 +28,4 @@ category: React系列
 - 执行机制：React 事件通过事件委托到 document 统一处理，原生是直接绑定
 
 #### 一些变化
-React 17 之前，合成事件的原生监听器绑定在 document 上；React 17 及之后，监听器绑定在 React 应用的「根容器节点」（如 ReactDOM.render(<App />, root) 中的 root 元素）。
+React 17 之前，合成事件的原生监听器绑定在 document 上；React 17 及之后，监听器绑定在 React 应用的「根容器节点」（如 ReactDOM.render(<App />, root) 中的 root 元素）。为什么？主要是因为有些项目存在多个react版本，避免混乱。
