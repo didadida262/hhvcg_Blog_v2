@@ -200,9 +200,9 @@ export const SiderComponent = () => {
 
 ```
 
-**三. asdasd**
+**三. 总结一下**
 
-总结一下：` action --> dispatcher ---> store ---> view`, 同vuex如出一辙
+` action --> dispatcher ---> store ---> view`, 同vuex如出一辙
 
 
 
