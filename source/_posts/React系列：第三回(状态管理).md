@@ -1,18 +1,20 @@
 ---
-title: React系列：第三回(Redux)
+title: React系列：第三回(状态管理)
 date: 2024-03-09 21:44:24
 category: React系列
 
 ---
 
 
-### 本文见到那介绍下Redux的基本使用
+#### 本文见到那介绍下React中的状态管理
+主流就是俩： `Redux` 和 `Context`
+#### Redux
 
 ```javascript
 // 安装
 cnpm install @reduxjs/toolkit react-redux
 ```
-#### 一. 基本使用
+##### 基本使用
 redux是一个状态管理容器，类似vuex，几个重要的角色： `store（数据源）、action及reducer（负责修改数据）`。下面代码演示他的基本使用：
 ```javascript
 // index.js中引入redux的store和provider方法
@@ -88,7 +90,7 @@ const HomeComponent = () => {
 通过`useSelector`获取变量，通过`useDispatch`提交修改，效果如下：
 <img src="/img/reactredux1.gif" alt="">
 
-#### 二. 异步获取更新值
+##### 异步获取更新值
 
 通过异步请求拿到数据，更新store中的变量。
 
@@ -200,9 +202,66 @@ export const SiderComponent = () => {
 
 ```
 
-**三. 总结一下**
+##### 总结一下
 
 ` action --> dispatcher ---> store ---> view`, 同vuex如出一辙
+
+
+#### Content provider
+##### 没啥说的，直接上代码
+
+```jsx
+// 定义一个context文件，暴露组件及context
+import { createContext, useEffect, useState } from "react"; 
+interface ColorContext {
+  color: any;
+  setColor: React.Dispatch<React.SetStateAction<any>>;
+}
+
+export const ColorContext = createContext({} as ColorContext);
+export default function ColorProvider(props: any) {
+  const [color, setColor] = useState("#000000");
+  useEffect(
+    () => {
+      console.log("color>>>", color);
+    },
+    [color]
+  );
+  return (
+    <ColorContext.Provider
+      value={{
+        color,
+        setColor
+      }}
+    >
+      {props.children}
+    </ColorContext.Provider>
+  );
+}
+
+```
+
+
+```jsx
+// 导入ColorProvider，包裹子组件
+    <ColorProvider>
+      <div
+          className={`w-full h-full label px-[10px] py-[10px]  ${pattern.flexbet}`}
+        >
+        ...
+      </div>
+        
+    </ColorProvider>
+```
+
+```javascript
+    <!--  消费 -->
+    import {ColorContext} from '../Layout'
+    console.log(useContext(ColorContext))
+```
+
+
+
 
 
 
