@@ -157,3 +157,10 @@ tuple:
 ```javascript
 const arr: [string, boolean] = ['asd', true]
 ```
+
+#### 类型注解跟类型断言具体指的是啥？
+```javascript
+let x:number = 1234 //类型注解
+let x = 1234 as number // 类型断言
+```
+类型断言的意思，就是告诉解析器，我比你更懂这个是啥类型。
