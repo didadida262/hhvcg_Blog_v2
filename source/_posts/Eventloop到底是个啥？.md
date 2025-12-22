@@ -1,7 +1,7 @@
 ---
 title: Eventloop事件循环，到底是个啥？
 date: 2023-09-08 10:00:02
-category: 前端剑气双修专栏
+category: 前端剑气双修
 ---
 
 ### 本文介绍所谓`EventLoop`相关内容

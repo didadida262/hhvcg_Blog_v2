@@ -1,6 +1,6 @@
 ---
 title: 'JS的转折分界: ES6'
-category: 前端剑气双修专栏
+category: 前端剑气双修
 date: 2023-08-07 17:03:48
 tags:
 ---

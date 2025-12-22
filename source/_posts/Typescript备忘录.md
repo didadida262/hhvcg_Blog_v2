@@ -1,7 +1,7 @@
 ---
 title: Typescript备忘录
 date: 2023-08-28 23:57:30
-category: 前端剑气双修专栏
+category: 前端剑气双修
 ---
 
 #### 本文纯属ts的内容备忘录

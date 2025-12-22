@@ -1,7 +1,7 @@
 ---
 title: Vue.js系列：实现一个自己的vue
 date: 2023-08-09 09:54:37
-category: 前端剑气双修专栏
+category: 前端剑气双修
 tags:
 ---
 

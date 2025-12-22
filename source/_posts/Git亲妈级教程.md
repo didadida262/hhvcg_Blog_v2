@@ -1,6 +1,6 @@
 ---
 title: Git亲妈级教程
-category: 前端剑气双修专栏
+category: 前端剑气双修
 date: 2023-08-03 11:20:52
 tags:
 ---

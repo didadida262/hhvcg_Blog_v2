@@ -1,6 +1,6 @@
 ---
 title: js的上古规则:原型链那些事儿
-category: 前端剑气双修专栏
+category: 前端剑气双修
 date: 2023-08-03 15:39:41
 tags:
 ---

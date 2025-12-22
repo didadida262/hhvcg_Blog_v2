@@ -1,7 +1,7 @@
 ---
 title: Vue.js系列：Diff（patch）算法
 date: 2023-09-06 00:48:13
-category: 前端剑气双修专栏
+category: 前端剑气双修
 ---
 
 ### 本文尝试尽可能详细的介绍Diff(patch)算法的核心原理

@@ -1,7 +1,7 @@
 ---
 title: 前端数据库？sql.js
 date: 2023-09-18 09:25:52
-category: 前端剑气双修专栏
+category: 前端剑气双修
 ---
 
 ### 本文尽可能详细介绍sql.js。

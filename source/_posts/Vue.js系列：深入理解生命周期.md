@@ -2,7 +2,7 @@
 title: Vue.js系列：深入理解生命周期
 date: 2023-08-13 15:32:14
 tags:
-category: 前端剑气双修专栏
+category: 前端剑气双修
 
 ---
 

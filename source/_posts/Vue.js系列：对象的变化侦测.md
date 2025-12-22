@@ -1,6 +1,6 @@
 ---
 title: Vue.js系列：对象的变化侦测
-category: 前端剑气双修专栏
+category: 前端剑气双修
 date: 2023-08-07 22:39:40
 tags:
 ---

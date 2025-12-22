@@ -1,6 +1,6 @@
 ---
 title: JS类型详论
-category: 前端剑气双修专栏
+category: 前端剑气双修
 date: 2023-08-03 14:47:06
 tags:
 ---
