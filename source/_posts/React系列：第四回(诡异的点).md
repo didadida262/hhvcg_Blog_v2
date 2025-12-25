@@ -41,6 +41,17 @@ const AboutComponent = () => {
       return res
     })
 ```
+**区别补充**：
+```javascript
+  const handleStateClick = () => {
+    console.log('handleStateClick')
+    setCount(count + 1)
+    setCount((prev) => prev + 1)
+    console.log('count>>>', count)
+  }
+```
+setCount(count + 1)：拿你当前作用域里 count 的值，加 1 后设置状态；
+setCount(prev => prev + 1)：等到 React 执行这个 updater 函数的时候，再把“那时的最新状态”作为 prev 传入，返回新的状态值。
 
 再来一段：
 ```javascript
@@ -58,17 +69,6 @@ setState是否是“异步批量更新”，取决于执行上下文是否被 Re
 
 
 
-**小细节的补充**：下面代码的两种写法的区别？
-```javascript
-  const handleStateClick = () => {
-    console.log('handleStateClick')
-    setCount(count + 1)
-    setCount((prev) => prev + 1)
-    console.log('count>>>', count)
-  }
-```
-setCount(count + 1)：拿你当前作用域里 count 的值，加 1 后设置状态；
-setCount(prev => prev + 1)：等到 React 执行这个 updater 函数的时候，再把“那时的最新状态”作为 prev 传入，返回新的状态值。
 
 
 #### 父子组件通信问题
