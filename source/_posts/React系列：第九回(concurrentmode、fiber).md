@@ -25,7 +25,7 @@ render做的事情很清晰，就是**根据element的信息，生成真实的do
 那么react底层是如何做优化的呢？答案也很清晰，利用一个类似api`requestIdleCallback`的效果，异步执行.
 
 #### requestIdleCallback
-该函数的作用，就是能够观察浏览器在处理完每帧的工作之后，是否存在空余时间。如果有，就执行requestIdleCallback的回调，没有，则忽略。
+该函数的作用，就是能够观察浏览器在处理完每帧的工作之后，是否存在空余时间。如果有，就执行requestIdleCallback的回调，没有，则忽略。注意，这个就是大名鼎鼎的`Scheduler`的基石。 
 
 因此，react能够做到快速的底层思路就有了：**把render的操作变成一个个的任务单元。**这些任务单元执行的前提条件是：**当前帧存在空余时间，有则执行，没有下一帧继续判断执行。**
 既然提到了`requestIdleCallback`,那就不得不再提一下另一个api：`requestAnimationFrame`。这个api我们之前讲屏幕刷新率的时候也提到过。那么两者有什么区别呢？
