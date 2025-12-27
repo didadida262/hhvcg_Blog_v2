@@ -50,7 +50,7 @@ render做的事情很清晰，就是**根据element的信息，生成真实的do
 
 从实测效果来看，即使`raf`代码后执行，注册的任务优先级仍然高于`requestIdleCallback`,甚至还出现了raf执行了四次之后才执行了一次requestIdleCallback.
 
-顺便提一下的这俩的一个细节：`dealine参数`
+顺便提一下的这俩的一个细节：`deadline参数`
 
 ```javascript
     const workLoop2 = (deadline) => {
@@ -80,7 +80,7 @@ react的底层并未通过`timeRemaining`获取剩余时间，而是自创了一
 流程：
 <img src="/img/玩具react2_3.png" alt="">
 
-**总体思路**: 为了避免渲染时dom过深，导致耗时过长甚至卡死， 借助requestIdleCallback，将之前render做的事情，分开执行。当前浏览器是否空闲（即有无剩余时间），有，则判断当前是否存在下一个任务单元，有则执行。执行过程中，无时间了，打断，有则继续执行。直至最后完毕。
+**总体思路**: 为了避免渲染时dom过深，导致渲染耗时过长甚至卡死， 借助requestIdleCallback，将之前render做的事情，分开执行。当前浏览器是否空闲（即有无剩余时间），有，则判断当前是否存在下一个任务单元，有则执行。执行过程中，无时间了，打断，有则继续执行。直至最后完毕。
 
 #### Fiber架构。其核心：可中断、可恢复、优先级
 

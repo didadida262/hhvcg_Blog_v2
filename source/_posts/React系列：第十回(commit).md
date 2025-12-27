@@ -4,9 +4,10 @@ date: 2024-05-15 10:42:13
 category: React系列
 ---
 
-### 在前文中，我们介绍了基于所谓的fiber架构及requestIdleCallback实现的react快速渲染逻辑。本文中，我们介绍react的`commit`机制。
+#### 本文中，我们介绍react的`commit`机制。
 
-#### 1. 存在的问题
+#### 问题点
+在前文中，我们介绍了基于fiber架构及requestIdleCallback，实现react快速渲染的demo.但是存在一点问题。
 仔细观察下面的代码：
 ```javascript
 const performUniteOfWork = (fiber) => {
@@ -25,9 +26,9 @@ const performUniteOfWork = (fiber) => {
 }
 ```
 
-fiber结构的生成及dom挂载，是同步进行的。这直接导致一个现象：`页面的渲染内容，实际上是按次序挂在到页面上的。` 但是很显然，我们希望可以等待点时间然后看到全部内容，而不是看到页面子啊一点一点的呈现。如何实现？`append隔离--commit`
+fiber结构的生成及dom挂载，是同步进行的。这直接导致一个现象：`页面的渲染内容，实际上是按次序挂在到页面上的。` 但是很显然，我们希望可以等待点时间然后看到全部内容，而不是看到页面子啊一点一点的呈现。如何实现？`隔离--commit阶段统一提交`
 
-#### 2. commit阶段
+#### commit逻辑
 思路： `用一个wiproot变量，存储整个fiber，等待生成完成后，统一遍历这个wiproot，一次性生成`
 改造后的完整代码:
 ```javascript
