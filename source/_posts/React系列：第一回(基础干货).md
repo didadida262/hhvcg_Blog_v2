@@ -45,6 +45,9 @@ const element = React.createElement(
 贴一张react的渲染逻辑图。
 <img src="/img/react1_2.png" alt="">
 
+- `初始渲染`：JSX 编译为虚拟 DOM → 构建 Fiber 树（可中断）→ 提交阶段创建真实 DOM 并执行副作用（如 useEffect）；
+- `更新渲染`：状态 / Props 变化触发 → 生成新虚拟 DOM，通过 Fiber Diff 对比新旧 Fiber 树标记差异 → 提交阶段仅更新差异 DOM，执行副作用回调。
+
 
 ### 条件渲染，类似于vue中的v-if，jsx 中的写法如下：
 ```javascript

@@ -46,30 +46,13 @@ const AboutComponent = () => {
   const handleStateClick = () => {
     console.log('handleStateClick')
     setCount(count + 1)
+    // 函数式更新
     setCount((prev) => prev + 1)
     console.log('count>>>', count)
   }
 ```
 setCount(count + 1)：拿你当前作用域里 count 的值，加 1 后设置状态；
 setCount(prev => prev + 1)：等到 React 执行这个 updater 函数的时候，再把“那时的最新状态”作为 prev 传入，返回新的状态值。
-
-再来一段：
-```javascript
-this.setState({ x: 5 });
-console.log(this.state.x);  // 输出：5
-...
-...
-setTimeout(() => {
-  this.setState({ x: 10 });
-  console.log(this.state.x);  // 输出：10
-});
-
-```
-setState是否是“异步批量更新”，取决于执行上下文是否被 React 控制。它仅在「React 可控的同步执行上下文」中（如事件处理函数、生命周期函数）才会批量延迟更新；若在「React 不可控的异步上下文」中（如 setTimeout、Promise.then、原生事件回调），setState 会 同步执行，立即更新状态。
-
-
-
-
 
 #### 父子组件通信问题
 `场景`： 子组件A通过props获取父组件传过来的data数据渲染页面。同时，另一个子组件B通过事件告知父组件更新data数据，子组件A更新视图。
