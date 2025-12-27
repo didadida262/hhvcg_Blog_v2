@@ -4,7 +4,7 @@ date: 2024-05-15 10:42:13
 category: React系列
 ---
 
-#### 本文中，我们介绍react的`commit`机制。
+#### 本文中，我们介绍react的`commit、Reconciliation`机制。
 
 #### 问题点
 在前文中，我们介绍了基于fiber架构及requestIdleCallback，实现react快速渲染的demo.但是存在一点问题。
@@ -136,3 +136,7 @@ const myRender = (element, container) => {
 ```
 
 总体逻辑： **将fiber结构生成的过程及挂在阶段分隔开，先生成，在批量挂载**
+
+
+#### Reconciliation调和
+调和过程的核心就是diff：`以新的虚拟 DOM 为依据，对比旧 Fiber 生成新 Fiber 树，这个对比过程就是 Diff`。这个定义是我目前看到的最准确的定义，没有之一。每次fiber节点的对比，会根据情况给fiber打上对应的tag，就是所谓的effectTag，例如`placement、update、deletion`等，然后在commit阶段，根据对应的effecttag，修改真实的dom
