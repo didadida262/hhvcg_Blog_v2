@@ -17,7 +17,16 @@ if theme.aside.card_webinfo.enable
         .webinfo-item
           .item-name=_p('aside.card_webinfo.site_wordcount') + " :"
           .item-count=totalcount(site)
-      if theme.statistics_51la.enable
+      if theme.cloudflare_analytics.enable
+        .webinfo-item
+          .item-name= _p('aside.card_webinfo.site_uv_name') + " :"
+          .item-count#cloudflare_site_uv
+            i.fa-solid.fa-spinner.fa-spin
+        .webinfo-item
+          .item-name= _p('aside.card_webinfo.site_pv_name') + " :"
+          .item-count#cloudflare_site_pv
+            i.fa-solid.fa-spinner.fa-spin
+      else if theme.statistics_51la.enable
         .webinfo-item
           .item-name= _p('aside.card_webinfo.site_uv_name') + " :"
           .item-count#51la_site_uv

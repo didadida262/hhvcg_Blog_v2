@@ -63,15 +63,20 @@ div
     script(async data-pjax src= theme.asset.busuanzi || '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js')
 
   if theme.statistics_51la.enable
-    // 51la统计脚本
-    script.
-      document.write('<script language="javascript" src="https://js.users.51.la/' + '!{theme.statistics_51la.id}' + '.js"></script>');
-
-    // 51la数据处理脚本
+    // 51la数据处理脚本（SDK 已在 head 中加载）
     script(src=url_for(theme.asset.statistics_51la || '/js/statistics-51la.js'))
 
   if theme.local_statistics.enable
     // 本地统计脚本
     script(src=url_for(theme.asset.local_stats))
+
+  if theme.cloudflare_analytics.enable
+    // Cloudflare Web Analytics
+    script(defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "' + theme.cloudflare_analytics.token + '"}')
+    // Cloudflare Analytics 配置
+    script.
+      window.CF_WORKER_URL = '#{theme.cloudflare_analytics.worker_url || ""}';
+    // Cloudflare Analytics 数据处理脚本
+    script(src=url_for('/js/cloudflare-analytics.js'))
 
   !=partial('includes/third-party/search/index', {}, {cache: true})

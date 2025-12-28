@@ -276,11 +276,18 @@ busuanzi:
   site_pv: false
   page_pv: false
 
-# 51la统计配置 (推荐)
+# 51la统计配置 (推荐 - 使用真实数据)
 statistics_51la:
-  enable: false
-  # 51la统计代码ID，替换为您的实际ID
-  id: "your_51la_id_here"
+  enable: true
+  # 51la统计代码ID（从安装代码中获取）
+  # 获取方式：https://www.51.la/ 注册后创建网站，在安装代码中找到 id 参数
+  id: "30WgsyE10THvFJdm"
+  # ck 参数（通常与 id 相同，用于数据分离）
+  ck: "30WgsyE10THvFJdm"
+  # 扩展配置
+  autoTrack: true  # 开启事件分析功能（推荐开启，用于热力图等功能）
+  hashMode: false  # 单页面应用支持（如果使用 Vue/React 等框架，设置为 true）
+  screenRecord: false  # 开启屏幕录制功能（可选）
 
 # 百度统计配置 (可选)
 baidu_analytics:
@@ -288,10 +295,20 @@ baidu_analytics:
   # 您的百度统计ID
   id: "your_baidu_id_here"
 
-# 本地统计配置 (简单备用方案)
+# 本地统计配置 (已关闭，使用 51la 统计)
 local_statistics:
-  enable: false  # 暂时关闭所有统计服务，用"-"显示
-  # 如果您只想使用本地统计，可以将其他统计服务设为false
+  enable: false
+
+# Cloudflare Web Analytics 配置 (已关闭，使用 51la 统计)
+cloudflare_analytics:
+  enable: false
+  # Cloudflare Web Analytics Token
+  # 获取方式：Cloudflare Dashboard -> Web Analytics -> 您的网站 -> 复制 token
+  token: "your_cloudflare_analytics_token_here"
+  # Cloudflare Worker URL (必需)
+  # 必须创建 Cloudflare Worker 来通过 API 获取统计数据
+  # 如果没有配置，将显示 "-"
+  worker_url: ""
 
 # Time difference between publish date and now (網頁運行時間)
 # Formal: Month/Day/Year Time or Year/Month/Day Time
