@@ -49,8 +49,6 @@ const urls = [
 const envMapTexture = new THREE.CubeTextureLoader().load( urls );
 scene.background = envMapTexture;
 ```
-<img src="/img/贴图2.gif" alt="图片描述">
 
-加上了环境贴图，瞬间逼真了许多吧。
 
 
