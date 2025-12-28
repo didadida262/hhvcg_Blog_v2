@@ -597,7 +597,7 @@ google_analytics:
 
 # Cloudflare Analytics
 # https://www.cloudflare.com/zh-tw/web-analytics/
-cloudflare_analytics:
+# cloudflare_analytics: (已在上方配置，此处注释掉避免重复)
 
 # Microsoft Clarity
 # https://clarity.microsoft.com/
