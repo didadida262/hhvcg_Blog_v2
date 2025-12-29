@@ -18,4 +18,4 @@ so,remember:
 - Input-understand-Output
 - do not waste the time you invested in the past
 
-<img src="/img/img1_Method_Of_Learning.png" alt="">
+<img src="/img/img1_Method_Of_Learning.jpg" alt="">
