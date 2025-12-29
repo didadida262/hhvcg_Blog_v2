@@ -9,6 +9,13 @@ category: 'Miscellany'
 - `Step 3`: locate a reliable mentor, work through the course, and correct misunderstandings
 - `Step 4`: break the material into chunks, then study each deeply in cycles
 - `Step 5`: take a comprehensive test to verify you truly understand what you learned
-- `Step 6`: keep cycling—practice and produce output. Above all, **do not waste the time you invested in the past**
+- `Step 6`: keep cycling—practice and produce output. Above all.
+
 
 Mastery comes down to one rule: **keep taking steps without stopping, and even a lame tortoise can travel a thousand miles; pile up grains of earth and before long a hill stands tall. In other words: only practice makes perfect.**
+
+so,remember:
+- Input-understand-Output
+- do not waste the time you invested in the past
+
+<img src="/img/img1_Method_Of_Learning.png" alt="">
