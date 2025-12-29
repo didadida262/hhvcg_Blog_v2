@@ -137,6 +137,6 @@ character.loadParts( config );
 scene.add( character.root );
 ```
 
-**4. 最终效果**
-<img src="/img/threejs_md2_1.gif" alt="图片描述">
+<!-- **4. 最终效果**
+<img src="/img/threejs_md2_1.gif" alt="图片描述"> -->
 

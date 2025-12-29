@@ -3,12 +3,14 @@
 node_modules/
 dist/
 db.json
-public
+# public - 构建输出目录，不应该提交到 Git
+# Cloudflare Pages 会在构建时生成此目录
+public/
 .deploy_git
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-package-lock.json
+# package-lock.json - 需要提交到仓库，以便 Cloudflare Pages 使用 npm
 tests/**/coverage/
 # Editor directories and files
 .idea
