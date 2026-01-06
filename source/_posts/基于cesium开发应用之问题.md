@@ -29,3 +29,36 @@ const model = viewer.scene.primitives.add(Cesium.Model.fromGltf({
   modelMatrix: Cesium.Transforms.headingPitchRollToModelMatrix(position, new Cesium.HeadingPitchRoll())
 }));
 ```
+
+#### 顺带提一句threejs中的优化方案
+**核心优化：减少 Draw Call（绘制调用）**
+
+`方案 1：合并几何体（无独立交互需求）`
+```javascript
+import { BufferGeometryUtils } from 'three/addons/utils/BufferGeometryUtils.js';
+
+const geometries = [];
+for (let i = 0; i < 1000; i++) {
+  const geo = new THREE.BoxGeometry(1, 1, 1);
+  geo.translate(Math.random() * 50, 0, Math.random() * 50);
+  geometries.push(geo);
+}
+// 合并为1个几何体，仅1次Draw Call
+const mergedGeo = BufferGeometryUtils.mergeBufferGeometries(geometries);
+const mergedMesh = new THREE.Mesh(mergedGeo, new THREE.MeshLambertMaterial({ color: 0x0088ff }));
+scene.add(mergedMesh);
+```
+
+`方案 2：实例化渲染（需独立变换）`
+```javascript
+const geo = new THREE.BoxGeometry(1, 1, 1);
+const material = new THREE.MeshLambertMaterial({ color: 0x0088ff });
+const instancedMesh = new THREE.InstancedMesh(geo, material, 1000);
+scene.add(instancedMesh);
+
+const matrix = new THREE.Matrix4();
+for (let i = 0; i < 1000; i++) {
+  matrix.setPosition(Math.random() * 50, 0, Math.random() * 50);
+  instancedMesh.setMatrixAt(i, matrix);
+}
+```
