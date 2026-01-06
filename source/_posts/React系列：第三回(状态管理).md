@@ -7,7 +7,57 @@ category: React系列
 
 
 #### 本文见到那介绍下React中的状态管理
-主流就是俩： `Redux` 和 `Context`
+适配react的状态库很多，本文涉及三个： `Zustand`、`Redux` 和 `Context`
+#### Zustand
+
+```javascript
+// npm install zustand
+
+// 2. 创建store
+import { create } from 'zustand';
+
+const useCounterStore = create((set) => ({
+  count: 0,
+  // 同步更新
+  increment: () => set((state) => ({ count: state.count + 1 })),
+  decrement: () => set((state) => ({ count: state.count - 1 })),
+  // 异步更新（内置支持，无需中间件）
+  incrementAsync: () => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        set((state) => ({ count: state.count + 1 }));
+        resolve();
+      }, 1000);
+    });
+  }
+}));
+
+// 3. 组件中直接使用（无需Provider）
+function Counter() {
+  // 方式1：选择单个状态（自动订阅更新）
+  const count = useCounterStore((state) => state.count);
+  const increment = useCounterStore((state) => state.increment);
+  
+  // 方式2：批量选择（减少重渲染）
+  // const { count, increment, decrement } = useCounterStore(
+  //   (state) => ({ count: state.count, increment: state.increment, decrement: state.decrement }),
+  //   { shallow: true } // 浅比较，避免不必要的重渲染
+  // );
+
+  return (
+    <div>
+      <p>{count}</p>
+      <button onClick={increment}>+</button>
+      <button onClick={() => useCounterStore.getState().decrement()}>-</button>
+      <button onClick={() => useCounterStore.getState().incrementAsync()}>+（异步）</button>
+    </div>
+  );
+}
+```
+
+
+
+
 #### Redux
 
 ```javascript
