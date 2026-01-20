@@ -11,12 +11,20 @@ category: 性能的考量
 **原因**：Cesium 默认对每个 Entity 单独渲染，海量实体导致 DrawCall（绘制调用）激增；
 **解决方案**：
 - 数据分块 + 视域剔除：基于Cesium.ScreenSpaceCameraController监听视角变化，仅渲染当前视域内的实体，远距实体暂存 / 销毁；
+```javascript
+// 批量点优化（10万+点）
+const pointCollection = new Cesium.PointPrimitiveCollection({
+  frustumCulling: true, // 开启视口剔除
+});
+```
 - 开启性能优化配置
 ```javascript
 viewer.scene.fog.enabled = true; // 开启雾效，远距模型自动淡化
 viewer.scene.debugShowFramesPerSecond = true; // 监控帧率
 viewer.scene.maximumAliasedLineWidth = 1; // 降低线条渲染开销
 ```
+
+
 
 #### 3D 模型（GLB/GLTF）加载异常 / 显示不全
 **原因**： 坐标不兼容
