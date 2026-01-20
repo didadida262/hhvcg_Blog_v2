@@ -37,3 +37,4 @@ const model = viewer.scene.primitives.add(Cesium.Model.fromGltf({
   modelMatrix: Cesium.Transforms.headingPitchRollToModelMatrix(position, new Cesium.HeadingPitchRoll())
 }));
 ```
+

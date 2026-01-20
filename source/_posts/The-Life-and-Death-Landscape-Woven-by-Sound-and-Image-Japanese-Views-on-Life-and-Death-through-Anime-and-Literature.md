@@ -1,12 +1,12 @@
 ---
 title: >-
-  The Life-and-Death Landscape Woven by Sound and Image: Japanese Views on Life
-  and Death through Anime and Literature
+  The Life-And-Death Landscape Woven By Sound And Image: Japanese Views On Life
+  And Death Through Anime And Literature
 date: 2023-12-29 04:48:40
 category: 'Miscellany'
 ---
 
-#### The Life-and-Death Landscape Woven by Sound and Image: Japanese Views on Life and Death through Anime and Literature
+#### The Life-And-Death Landscape Woven By Sound And Image: Japanese Views On Life And Death Through Anime And Literature
 
 In the cultural context of Japan, life and death have never been absolute boundaries of either-or, but rather **intertwined, mutually reflective symbiotic existences**. The soundtracks composed by **Yasuharu Takanashi** for *Shiki* and *Hell Girl*, with their melodies interweaving pathos and ethereality, establish the emotional foundation for the life-and-death narratives of these two anime series. The anime's portrayal of death as a daily occurrence and their profound questioning of karmic cycles and fate resonate with the death aesthetics found in the works of writers like **Yasunari Kawabata** and **Yukio Mishima**, collectively delineating the unique Japanese perspective on life and death—one that both **reveres the ultimate nature of death** while **dissolving the terror of death**, seeking a balance between life and death through the interweaving of sorrow and beauty.
 

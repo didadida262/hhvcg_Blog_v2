@@ -1,5 +1,5 @@
 ---
-title: Threejs系列：第三回
+title: Threejs系列：第三回(贴图纹理)
 date: 2023-11-16 10:24:59
 category: 前端三维系列
 ---
@@ -44,6 +44,8 @@ cube.position.x = 1
 
 <img src="/img/threejs3_2.jpg" alt="图片描述">
 <img src="/img/threejs3_3.jpg" alt="图片描述">
+<img src="/img/贴图1.gif" alt="图片描述">
+
 
 **纹理又分为了map和envMap，后者就是环境纹理**
 如下方式添加：
