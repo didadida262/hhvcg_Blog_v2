@@ -15,7 +15,7 @@ category: 'Miscellany'
 Mastery comes down to one rule: **keep taking steps without stopping, and even a lame tortoise can travel a thousand miles; pile up grains of earth and before long a hill stands tall. In other words: only practice makes perfect.**
 
 so,remember:
-- Input-understand-Output
-- do not waste the time you invested in the past
+- `Understanding-Input --> Understanding-Output`
+- `Do not waste the time you invested in the past`
 
 <img src="/img/img1_Method_Of_Learning.jpg" alt="">
