@@ -16,9 +16,7 @@ category: 'Miscellany'
 - `Step 1 - Preparation`: Find an authoritative reference book for core vocabulary as the foundation of your vocabulary
 - `Step 2`: Through countless iterations and repeated practice, internalize every core vocabulary word until it becomes second nature
 - `Step 3`: With a pen and paper, listen and write simultaneously, repeat countless times until you can completely transcribe it
-
-
-
+- `Step 4`: Take a standardized test to verify your learning effectiveness
 
 
 Mastery comes down to one rule: **keep taking steps without stopping, and even a lame tortoise can travel a thousand miles; pile up grains of earth and before long a hill stands tall. In other words: only practice makes perfect.**
