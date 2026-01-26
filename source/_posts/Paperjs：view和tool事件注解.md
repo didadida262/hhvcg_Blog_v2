@@ -1,7 +1,7 @@
 ---
 title: Paperjs：view和tool事件注解
 date: 2023-09-01 13:55:57
-category: Paperjs专栏
+category: Paperjs系列
 ---
 
 **在前面介绍点类的时候，我们有提到过，tool类的实例有鼠标的各种事件，view类的实例也有相关的一些方法。但是，似乎又有些不同。本文将尽可能详细介绍**

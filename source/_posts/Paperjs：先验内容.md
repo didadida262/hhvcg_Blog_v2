@@ -1,7 +1,7 @@
 ---
 title: Paperjs：先验内容
 date: 2023-08-24 10:57:25
-category: Paperjs专栏
+category: Paperjs系列
 ---
 
 ### 本文主要介绍一些paperjs的先验知识（当然英文可以的，你也可以选择直接阅读官方原版文档）。

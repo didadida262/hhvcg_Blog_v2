@@ -1,6 +1,6 @@
 ---
 title: 'Paperjs: 序章'
-category: Paperjs专栏
+category: Paperjs系列
 date: 2023-08-24 10:29:52
 tags:
 ---
