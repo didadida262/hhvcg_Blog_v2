@@ -4,33 +4,24 @@ date: 2023-10-24 23:13:23
 category: React系列
 ---
 
-**自本文开始，我们将逐步介绍react的必要概念，以备忘录。**
+**自本文开始，我们将逐步介绍react相关的所有内容。**
 
-### react带来了利？
-- 1. `声明式编码`，一种编程范式，关注的是你要做什么，而不是如何做。
-- 2. react-native中，使用js开发`移动端应用`
-- 3. 虚拟dom+优秀的diff算法，尽量减少与真实dom的交互
-- 4. 组件化开发。基本标准：**可组合、可维护、可复用**
-
-### 基础概念
-React仅仅是一个UI库。官方对`React`的定义为：
-> 用于构建用户界面的 JavaScript 库。
-其根基思想就是 `数据驱动视图`
-
-
-`整体逻辑如下：`
+#### 是啥
+一个标准的`数据驱动视图`的前端开发框架。`整体逻辑如下：`
 <img src="/img/react1_1.png" alt="">
 
+#### 带来了啥？
+- `声明式编码 + 虚拟dom+ diff算法`，一种编程范式，关注的是你要做什么，而不是如何做。主要区别之前jquery时代的开发模式，专注功能逻辑的开发，而无需关注dom实现。
+- 组件化开发。基本标准：**可组合、可维护、可复用**
+- react-native中，使用js开发`移动端应用`
 
-### jsx语法
-
-`JavaScript 中夹杂着 HTML 的语句在其中`,称之为jsx语法，它是`对 JavaScript 语法的扩展，本质是React.createElement的语法糖`。其中的React.createElement做的事情很清晰，他有三个参数type、config和children。顾名思义，分别代表节点类型如`div`、节点所有属性如`className`和节点的子节点。就是说以jsx文件代码为输入，编译生成虚拟dom，然后通过render方法生成真实的dom节点。
-
-`为了生成虚拟dom，两种写法`
+#### jsx语法
+`JavaScript 中夹杂着 HTML 的语句在其中`,称之为jsx语法，它是对 JavaScript 语法的扩展，本质是React.createElement的语法糖。为了生成虚拟dom，两种写法：
 
 ```javascript
 // jsx
-const element = <h1 className="title">Hello, React</h1>;
+const element = <h1 className="title">Hello, React</h1>; 
+ + babel转换后，等同于下方 ↓
 
 // React.createElement
 const element = React.createElement(
@@ -39,17 +30,18 @@ const element = React.createElement(
   'Hello, React'       // 子元素（children）
 );
 ```
+其中的React.createElement做的事情很清晰，他有三个参数type、config和children。顾名思义，分别代表节点类型如`div`、节点所有属性如`className`和节点的子节点。就是说以jsx文件代码为输入，编译生成虚拟dom，然后通过render方法生成真实的dom节点。
 
-
-### 渲染逻辑
+#### 渲染逻辑
 贴一张react的渲染逻辑图。
 <img src="/img/react1_2.png" alt="">
 
-- `初始渲染`：JSX 编译为虚拟 DOM → 构建 Fiber 树（可中断）→ 提交阶段创建真实 DOM 并执行副作用（如 useEffect）；
-- `更新渲染`：状态 / Props 变化触发 → 生成新虚拟 DOM，通过 Fiber Diff 对比新旧 Fiber 树标记差异 → 提交阶段仅更新差异 DOM，执行副作用回调。
+- `初始渲染`：JSX 编译 → React.createElement调用 → 执行调用生成虚拟 DOM → 基于虚拟 DOM 构建 Fiber 树 → 提交（Commit）阶段：根据 Fiber 树创建真实 DOM 挂载到页面 → 执行副作用。
+- `更新渲染`：状态变化，触发重渲染 → 生成新的虚拟 DOM → 进入调和阶段：基于新虚拟 DOM 和旧 Fiber 树做 Fiber Diff（对比新旧节点，标记 “副作用”） → 构建出新的 Fiber 树（workInProgress 树） → 提交阶段：仅将 Fiber 树中标记的差异部分更新到真实 DOM → 执行副作用
 
 
-### 条件渲染，类似于vue中的v-if，jsx 中的写法如下：
+#### 条件渲染
+类似于vue中的v-if，jsx 中的写法如下：
 ```javascript
 const Example = () => {
   // 条件判断，随机显示男女
@@ -63,7 +55,8 @@ const Example = () => {
   );
 }
 ```
-### React组件
+
+#### React函数组件
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -93,9 +86,7 @@ root.render(
 export default App;
 
 ```
-上面的代码中，我们写了一个函数组件，搭配ts定义了该组件的Props类型。
-
-react中的组件有两种方式：`函数组件和类组件`，目前公司业务普遍选择前者。
+react中的组件实际有两种方式：`函数组件和类组件`，目前公司业务普遍选择前者，后者默认已成历史。
 **两者的区别**
 1. 两者作为组件一致，
 2. 类组件的根基时oop，面向对象编程，函数组件的根基时fp，即函数式编程,前者有this，后者无；前者可以访问生命周期方法，后者不能。
@@ -192,10 +183,9 @@ root.render(
 
 export default App;
 ```
-实际就是一个计数器，点击++。但我们引入了新的内容 **useState**，说白了就是组件内部有了状态变量。useState就是所谓的 是 react hooks 中的一种。
-根据有无状态，组件可以分为两种：**简单组件（simple component） 和 有状态组件（stateful component）。**
+实际就是一个计数器，点击++。
 
-### Hook
+#### Hook
 `hook的本质，就是对逻辑的抽象。`拿一个组件显隐的功能举例：
 
 原始版本：
@@ -532,8 +522,7 @@ export default AboutComponent
 `总结一下`：usecallback、useMemo，useCallback主要用于避免在每次渲染时都重新创建函数，而useMemo用于避免在每次渲染时都进行复杂的计算和重新创建对象。useCallback返回一个函数，当依赖项改变时才会更新；而useMemo返回一个值，用于缓存计算结果，减少重复计算。
 
 `useLayoutEffect`
-同useEffect几乎一摸一样，但稍有些区别。官方建议： 大多数场景下直接使用`useEffect`，但代码引起页面闪烁就推荐使用`useLayoutEffect`处理。即：直接操作dom样式相关的使用后者。
-useLayoutEffect是在所有dom变更之后`同步调用`。重点就在于这个同步，大量变动会引起阻塞，建议优先useEffect。
+同useEffect几乎一摸一样，但稍有些区别。官方建议： 大多数场景下直接使用`useEffect`，但代码引起页面闪烁就推荐使用`useLayoutEffect`处理。useLayoutEffect 在 DOM 挂载 / 更新后、浏览器绘制前执行；useEffect 在 DOM 挂载 / 更新后、浏览器绘制完成后执行。
 
 ### 通信
   - react中的通信，同vue有点类似，子组建通过props获取父组建的值，但是因为reat是单向数据流，子组建无法直接修改父组建的值。所以子组建通过调用父组建的方法把值传过去
