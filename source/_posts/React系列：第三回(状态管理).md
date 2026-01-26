@@ -310,6 +310,16 @@ export default function ColorProvider(props: any) {
     console.log(useContext(ColorContext))
 ```
 
+#### 各自弊端
+- Context Provider
+`性能失控。`状态变更会触发所有`消费 useContext 的组件无条件重渲染`，且无内置性能优化方案，手动优化（拆分 Context + memo/useMemo）成本高、易出错。
+- Redux
+`开发效率低。`模板代码冗余、学习 / 使用成本高，即使简单的状态更新也需定义 Action、Reducer、Action Creator 等多层结构，中小型项目中 “过度工程化”，开发效率低。
+- Zustand
+`团队协作可维护性弱。`缺乏强规范约束，多人协作时易出现状态修改逻辑混乱（如随意修改 Store 状态、异步逻辑散落在各处），且生态和工具链远不如 Redux 成熟，复杂场景（如多请求依赖、状态回溯）需手动封装。
+
+总体：这三个目前算是主流吧，当然还有很多其他的选项。从实操层面看，无脑zustand即可。
+
 
 
 
