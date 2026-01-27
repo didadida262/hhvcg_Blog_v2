@@ -6,7 +6,7 @@ category: React系列
 ---
 
 #### 本文开始，我们将用几篇文章记录下，我们的my_react的实现逻辑。
-类似于vue的学习过程，我们将尝试手写react的重要组成部分，以便更为彻底的理解其底层实现。涉及的内容包括：`createElement、render、cocurrent mode、fiber、render commit、reconcilliation及function components。`本文介绍**createElement和render**
+类似于vue的学习过程，我们将尝试手写react的重要组成部分，以便更为彻底的理解其底层实现。涉及的内容包括：`createElement、render、cocurrent mode、fiber、render commit、reconcilliation及function components。`本文介绍**createElement**和**render**。
 
 
 #### 渲染整体逻辑
@@ -33,7 +33,7 @@ category: React系列
 <img src="/img/reactjs系列1_1.gif" alt="">
 
 
-#### diy之
+#### Diy版本
 `完整代码`
 ```html
 <!-- html -->
