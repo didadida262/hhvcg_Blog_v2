@@ -12,8 +12,8 @@ category: React系列
 
 **一. 那么在react中， 这个过程又是如何的呢？**
 实际上无论什么前端框架，其渲染的逻辑都是一致的，只是实现的方式不同，react亦是如此。
-- `初次加载时`，JSX代码解析 --> render生成虚拟dom --> 挂载显示页面
-- `状态数据变化时`，修改状态setstate --> render生成新的虚拟dom --> update(旧Vnode 新Vnode) --> diff + patch  --> 挂载显示页面
+- `初始渲染`：JSX 编译 → React.createElement调用 → 执行调用生成虚拟 DOM → 基于虚拟 DOM 构建 Fiber 树 → 提交（Commit）阶段：根据 Fiber 树创建真实 DOM 挂载到页面 → 执行副作用。
+- `更新渲染`：状态变化，触发重渲染 → 生成新的虚拟 DOM → 进入调和阶段：基于新虚拟 DOM 和旧 Fiber 树做 Fiber Diff（对比新旧节点，标记 “副作用”） → 构建出新的 Fiber 树（workInProgress 树） → 提交阶段：仅将 Fiber 树中标记的差异部分更新到真实 DOM → 执行副作用
 
 #### 虽然整体逻辑如此，但是这里还需要做点扩展。react18引入了`Concurrent Mode`.
 在 React 18 之前，React 的渲染是「同步且不可中断」的：一旦开始渲染，会占用主线程直到完成，期间若有用户输入、点击等高频交互，会出现响应延迟（如输入文字时光标滞后）。
