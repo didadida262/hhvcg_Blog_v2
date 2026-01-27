@@ -4,14 +4,13 @@ date: 2024-05-15 10:42:13
 category: React系列
 ---
 
-#### 本文中，我们介绍react的`commit、Reconciliation`机制。
+#### 本文将介绍隔离fiber两个阶段：`Reconciliation、Commit`
 
-#### 问题点
-在前文中，我们介绍了基于fiber架构及requestIdleCallback，实现react快速渲染的demo.但是存在一点问题。
-仔细观察下面的代码：
+#### 前文的瑕疵
+在上一篇文章中，我们介绍了基于fiber架构及requestIdleCallback，实现react快速渲染的demo.但是存在一点问题。仔细观察下面的代码：
 ```javascript
-const performUniteOfWork = (fiber) => {
-  console.log('<<<<<<<<<<<<<<<<performUniteOfWork>>>>>>>>>>>>>')
+const performUnitOfWork = (fiber) => {
+  console.log('<<<<<<<<<<<<<<<<performUnitOfWork>>>>>>>>>>>>>')
   console.log('fiber>>>', fiber)
   if (!fiber.dom) {
     fiber.dom = createDom(fiber)
@@ -26,10 +25,10 @@ const performUniteOfWork = (fiber) => {
 }
 ```
 
-fiber结构的生成及dom挂载，是同步进行的。这直接导致一个现象：`页面的渲染内容，实际上是按次序挂在到页面上的。` 但是很显然，我们希望可以等待点时间然后看到全部内容，而不是看到页面子啊一点一点的呈现。如何实现？`隔离--commit阶段统一提交`
+fiber结构的生成及dom挂载，是同步进行的。这直接导致一个现象：`页面的渲染内容，实际上是按次序挂在到页面上的。` 但是很显然，我们希望可以等待点时间然后看到全部内容，而不是看到页面子啊一点一点的呈现。如何实现？`隔离commit阶段统一提交`。
 
-#### commit逻辑
-思路： `用一个wiproot变量，存储整个fiber，等待生成完成后，统一遍历这个wiproot，一次性生成`
+#### Commit逻辑
+`思路`： 用一个wiproot变量，存储整个fiber，等待生成完成后，统一遍历这个wiproot，一次性挂载
 改造后的完整代码:
 ```javascript
 
@@ -57,8 +56,8 @@ const createDom = (fiber) => {
     const dom = fiber.type === 'text'? document.createTextNode(fiber.props.nodeValue): document.createElement(fiber.type)
   return dom
 }
-const performUniteOfWork = (fiber) => {
-  console.log('<<<<<<<<<<<<<<<<performUniteOfWork>>>>>>>>>>>>>')
+const performUnitOfWork = (fiber) => {
+  console.log('<<<<<<<<<<<<<<<<performUnitOfWork>>>>>>>>>>>>>')
   console.log('fiber>>>', fiber)
   if (!fiber.dom) {
     fiber.dom = createDom(fiber)
@@ -111,7 +110,7 @@ const workLoop = (deadline) => {
   console.warn('执行>>>loop')
   while (nextUniteWork && shouldYield) {
     console.log('执行>>>任务')
-    nextUniteWork = performUniteOfWork(nextUniteWork)
+    nextUniteWork = performUnitOfWork(nextUniteWork)
     shouldYield = deadline.timeRemaining() > 100
   }
   if (!nextUniteWork && wiproot) {
@@ -135,8 +134,9 @@ const myRender = (element, container) => {
 
 ```
 
-总体逻辑： **将fiber结构生成的过程及挂在阶段分隔开，先生成，在批量挂载**
+总体逻辑： **将fiber结构生成的过程及挂载阶段分隔开，先生成，再批量挂载**
 
 
-#### Reconciliation调和
-调和过程的核心就是diff：`以新的虚拟 DOM 为依据，对比旧 Fiber 生成新 Fiber 树，这个对比过程就是 Diff`。这个定义是我目前看到的最准确的定义，没有之一。每次fiber节点的对比，会根据情况给fiber打上对应的tag，就是所谓的effectTag，例如`placement、update、deletion`等，然后在commit阶段，根据对应的effecttag，修改真实的dom
+#### 总结
+所谓Reconciliation（调和），就是`数据更新后生成「新的虚拟 DOM」，React 以这个新虚拟 DOM 为 “数据源”，对比「旧 Fiber 树（current 树）」来构建「新 Fiber 树（workInProgress 树）」，并在构建过程中标记差异`。这个定义是我目前看到的最准确的定义，没有之一。每次fiber节点的对比，会根据情况给fiber打上对应的tag，就是所谓的effectTag，例如`placement、update、deletion`等，然后在commit阶段，根据对应的effecttag，修改真实的dom。
+
