@@ -1,7 +1,7 @@
 ---
 title: React系列：第十一回（fiber最终版）
 date: 2024-05-16 16:47:18
-category:
+category: React系列
 ---
 
 #### 本文介绍my_react的最终版
