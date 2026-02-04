@@ -50,6 +50,6 @@ const AboutComponent = () => {
   }
 ```
 setCount(count + 1)：拿你当前作用域里 count 的值，加 1 后设置状态；
-setCount(prev => prev + 1)：等到 React 执行这个 updater 函数的时候，再把“那时的最新状态”作为 prev 传入，返回新的状态值。
+setCount(prev => prev + 1)：等到 React 执行这个 updater 函数的时候，再把“那时的最新状态”作为 prev 传入，返回新的状态值。`记住：`更新函数不会在调用 setCount 时立刻运行，而是被 React 暂存到更新队列中；
 
 
