@@ -315,7 +315,34 @@ function FriendStatusWithCounter(props) {
   }
 ```
 `关于useEffect查一个场景题`：现在有一个页面，有三个子组件的div，分别是a、b、c，那如果我现在通过代码改变了他们的顺序，比如b、a、c，子组件中useEffect(() => { ... }, [])会触发吗？
-答案有两种，不触发。useEffect(() => { ... }, []) 只有在组件挂载时触发,react底层执行判断是否为同一组件的条件是：`标签名和key`。a、b、c无key时，react会默认加一个列表索引作为key，不触发。如果有key，就更不会触发。
+答案是，不触发。useEffect(() => { ... }, []) 只有在组件挂载时触发,react底层执行判断是否为同一组件的条件是：`标签名和key`。a、b、c无key时，react会默认加一个列表索引作为key，不触发。如果有key，就更不会触发。
+
+说到这里，必须补一个经典的案例：`错位`
+
+```javascript
+      {/* 错误用法 - 使用数组索引作为 key */}
+      <div
+        style={{ border: '2px solid red', padding: '16px', margin: '20px 0' }}
+      >
+        <h3 style={{ color: 'red' }}>❌ 错误用法：key = 数组索引</h3>
+        {dataList.map((item, index) => (
+          <div key={index} style={{ margin: '12px 0' }}>
+            <span>
+              数据内容：{item.content} | 索引：{index}
+            </span>
+            <input
+              type="text"
+              placeholder="请输入内容"
+              style={{ marginLeft: '10px', padding: '4px' }}
+            />
+          </div>
+        ))}
+        <p style={{ color: 'red', fontSize: '14px' }}>
+          问题：删除第一项后，输入框内容会错位绑定
+        </p>
+      </div>
+```
+删除第一项后，页面显示的还是1，2。原因：因为key是数组下标的索引。所以，`你以为的逻辑`：删除第一项数据，重新渲染，判定为delete，删除第一项显示二、三项数据。`实际是`：新的虚拟dom有两项，就是2、3，但是他们的各自索引却是1，2.此时拿着这个新的虚拟dom去到旧的fiber中去diff时，判定的分布式删除，而是更新，就是把原本1，2的数据更新为2，3，实际上被干掉的是第三项。这就是为什么，key是如此的重要的原因。
 
 
 `useReducer`
