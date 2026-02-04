@@ -11,12 +11,12 @@ category: React系列
 <img src="/img/react1_1.png" alt="">
 
 #### 带来了啥？
-- `声明式编码 + 虚拟dom+ diff算法`，一种编程范式，关注的是你要做什么，而不是如何做。主要区别之前jquery时代的开发模式，专注功能逻辑的开发，而无需关注dom实现。
+- `声明式编码 + 虚拟dom + diff算法`，一种编程范式，关注的是你要做什么，而不是如何做。主要区别之前jquery时代的开发模式，专注功能逻辑的开发，而无需关注dom实现。
 - 组件化开发。基本标准：**可组合、可维护、可复用**
 - react-native中，使用js开发`移动端应用`
 
 #### jsx语法
-`JavaScript 中夹杂着 HTML 的语句在其中`,称之为jsx语法，它是对 JavaScript 语法的扩展，本质是React.createElement的语法糖。为了生成虚拟dom，两种写法：
+`JavaScript 中夹杂着 HTML 的语句在其中`,称之为jsx语法，它是对 JavaScript 语法的扩展，jsx代码经过babel编译后，会生成React.createElement的调用，本质是React.createElement的语法糖。为了生成虚拟dom，两种写法：
 
 ```javascript
 // jsx
@@ -277,7 +277,7 @@ state的变量不能直接修改，这是规则
 useEffect 就是一个 Effect Hook，给函数组件增加了操作副作用的能力。它跟 class 组件中的 componentDidMount(组件第一次渲染结束后触发)、componentDidUpdate（组件每次更新结束后触发） 和 componentWillUnmount（组件将要卸载的时候触发） 具有相同的用途，只不过被合并成了一个 API。
 即 useEffect 可以根据参数的不同配置，在组件不同的渲染时机被调用。useEffect 接受两个参数：`副作用函数`,`依赖项，类型是数组`
 ```javascript
-// 依赖项是空数组，仅仅挂载和卸载时执行
+// 依赖项是空数组，仅在组件首次挂载（mount）后执行一次，组件卸载时执行清理函数
 useEffect(() => {
     ...
 },[]);
@@ -315,7 +315,7 @@ function FriendStatusWithCounter(props) {
   }
 ```
 `关于useEffect查一个场景题`：现在有一个页面，有三个子组件的div，分别是a、b、c，那如果我现在通过代码改变了他们的顺序，比如b、a、c，子组件中useEffect(() => { ... }, [])会触发吗？
-答案有两种，触发和不触发。useEffect(() => { ... }, []) 只有在组件挂载和卸载时触发。那么根据这个问题有两种情况，a、b、c无key时，就会触发。因为react底层执行判断是否为同一组件的条件是：`标签名和key`。因为没有key，那么改变后的组件a、b、c都会被判定为是新的实例。如果有key，就不会触发。
+答案有两种，不触发。useEffect(() => { ... }, []) 只有在组件挂载时触发,react底层执行判断是否为同一组件的条件是：`标签名和key`。a、b、c无key时，react会默认加一个列表索引作为key，不触发。如果有key，就更不会触发。
 
 
 `useReducer`
