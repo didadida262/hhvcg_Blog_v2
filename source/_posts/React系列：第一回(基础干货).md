@@ -551,9 +551,9 @@ export default AboutComponent
 `useLayoutEffect`
 同useEffect几乎一摸一样，但稍有些区别。官方建议： 大多数场景下直接使用`useEffect`，但代码引起页面闪烁就推荐使用`useLayoutEffect`处理。useLayoutEffect 在 DOM 挂载 / 更新后、浏览器绘制前执行；useEffect 在 DOM 挂载 / 更新后、浏览器绘制完成后执行。
 
-### 通信
+#### 通信
   - react中的通信，同vue有点类似，子组建通过props获取父组建的值，但是因为reat是单向数据流，子组建无法直接修改父组建的值。所以子组建通过调用父组建的方法把值传过去
-  - 无关组件之间传值，`context，redux`。其中context通常用于小型的项目，组件树中的传值，redux相比之则更适用于大型项目的全局状态管理。
+  - 无关组件之间传值，`Context、Redux、Zustand等`。其中context通常用于小型的项目，组件树中的传值，redux相比之则更适用于大型项目的全局状态管理。
 
 
 `useAsyncFn`
