@@ -1,7 +1,5 @@
 ---
-title:
-  The Life-And-Death Landscape Woven By Sound And Image: Japanese Views On Life
-  And Death Through Anime And Literature
+title: The Life-And-Death Landscape Woven By Sound And Image Japanese Views On Life And Death Through Anime And Literature
 date: 2023-12-29 04:48:40
 category: Miscellany
 ---
@@ -35,7 +33,6 @@ From the audio-visual narratives of *Shiki* and *Hell Girl* to the textual depic
 
 日本的生死观首先体现在**"生死同源"的共生认知**，这在《尸鬼》的剧情和配乐中得到了极致表达。在封闭的外场村，尸鬼的入侵打破了人类与死亡之间的屏障。死亡不再是遥远的终点，而是渗透日常生活的存在。村民一个接一个的神秘死亡，从最初的困惑到最后的抵抗，揭示了死亡从"异常"到"正常"的转变——这一过程与日本文学传统中将死亡视为日常生活一部分的做法一致。在川端康成的《雪国》中，叶子的致命坠落没有撕心裂肺的哭喊，只有雪花与火焰的静默交织，将死亡融入自然风景，成为可感知的日常体验。
 
-<img src="/img/za_pathon.jpg" alt="Picture description">
 
 高梨康治为《尸鬼》创作的配乐**"生命之水"**，以其交织着急促弦乐与深沉鼓点的旋律，描绘了人类与尸鬼之间不可调和的生存冲突。两种生命形式为存在而战，却都陷入命运的困境——人类捍卫的生存秩序终将崩塌，而尸鬼在阳光下追求生存的梦想也遥不可及。**"死海"**则用宁静的旋律勾勒出静信在目睹生死悲剧后的内心挣扎。他对"秩序"的质疑，恰恰指向了日本人对生死界限的困惑。这种困惑在三岛由纪夫的《金阁寺》中表现为对"毁灭之美"的追求——烧毁金阁的行为，实际上是对生死界限的主动突破，通过毁灭达到永恒。
 
