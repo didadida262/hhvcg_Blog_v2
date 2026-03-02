@@ -29,6 +29,7 @@ const element = React.createElement(
   { className: 'title' },  // 属性（props）
   'Hello, React'       // 子元素（children）
 );
+// 生成的element是一个虚拟dom
 ```
 其中的React.createElement做的事情很清晰，他有三个参数type、config和children。顾名思义，分别代表节点类型如`div`、节点所有属性如`className`和节点的子节点。就是说以jsx文件代码为输入，编译生成虚拟dom，然后通过render方法生成真实的dom节点。
 

@@ -51,23 +51,6 @@ category: React系列
     <div id="app"></div>
 </body>
 <script>
-    // 1.React官方使用
-    // const content = React.createElement(
-    //     'div',
-    //     {
-    //     title: 'title',
-    //     id: 'id',
-    //     },
-    //     '川崎重工'
-    // )
-    // console.log('content>>>', content)
-    // const root = ReactDOM.createRoot(
-    //     document.getElementById('root')
-    // );
-    // root.render(content)
-
-    // 2. diy版本
-
     const VNode = myCreateElement(
         'div',
         {
@@ -84,7 +67,8 @@ category: React系列
 </html>
 ```
 ```javascript
-// js 原始粗暴版
+
+// 版本1:原始粗暴版
 const createTextNode = (child) => {
     return {
         type: 'text',
