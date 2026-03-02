@@ -75,7 +75,7 @@ render做的事情很清晰，**首先创建该节点本身，然后更新props�
 <img src="/img/玩具react系列2_2.jpeg" alt="">
 
 **dealine用来提供额外的时间信息, 其中requestIdleCallback的deadline存在一个timeRemaining方法获取当前帧剩余时间**
-react的底层并未通过`timeRemaining`获取剩余时间，而是自创了一套`schedule`
+react的底层并未通过`timeRemaining`获取剩余时间，而是自创了一套`schedule`,这个暂且不谈。
 
 #### 借助requestIdleCallback改造实现
 流程：
@@ -185,7 +185,7 @@ const myRender = (element, container) => {
 <img src="/img/玩具react2_5.gif" alt="">
 
 
-总体的逻辑就是：**深度递归的规则，一个节点一个节点的往深处走，然后不停会退直至扫完所有节点。在扫的过程中，创建fiber，创建dom，并立即将当前节点的 DOM 挂载到父节点的 DOM 上**
+总体的逻辑就是：**深度递归的规则，一个节点一个节点的往深处走，然后不停会退直至扫完所有节点。在扫的过程中，创建fiber，创建dom，并立即将当前节点的 DOM 挂载到父节点的 DOM 上,更新，sibling，递归子节点**
 注意：
 - 1. react的底层实现中，因为存在兼容性的问题，并没有用**requestIdleCallback**，而是用的自己实现了的一套工具。
 - 2. 这一版本，实际上把调和阶段和commit阶段混在了一起，事实上挂载dom是在最终的commit阶段才执行的。
