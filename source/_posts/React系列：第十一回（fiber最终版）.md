@@ -189,3 +189,7 @@ const workLoop = (deadline) => {
 requestIdleCallback(workLoop);
 
 ```
+
+<img src="/img/react_v4.gif" alt="">
+
+调和阶段做的事情，就是用新的虚拟dom和旧的fiber进行对比，打标effecttag，目前就三个Update、Deletion和Placement。然后再commit阶段，根据这个effecttag，做对应的dom操作。文毕。
