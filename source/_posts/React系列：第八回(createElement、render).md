@@ -99,13 +99,11 @@ const myRender = (element, container) => {
 }
 ```
 
-通过`myCreateElement`生成虚拟dom，`myRender`实现挂载，也就是创建真实的dom并加载到页面中。
-
 效果如下：
 
 <img src="/img/react_toy1_2.gif" alt="">
 
-文毕。
+通过`myCreateElement`生成虚拟dom，再通过`myRender`，递归扫描儿子节点，创建真实dom，最终整体挂载到页面。文毕。
 
 <!-- `代数效应`: 看了tm一圈，愣是没看懂。 -->
 
