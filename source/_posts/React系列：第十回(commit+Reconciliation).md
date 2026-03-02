@@ -134,9 +134,12 @@ const myRender = (element, container) => {
 
 ```
 
-总体逻辑： **将fiber结构生成的过程及挂载阶段分隔开，先生成，再批量挂载**
+总体逻辑： **将fiber结构生成的过程及挂载阶段分隔开，先生成，再批量挂载。**
 
 
-#### 总结
+如果细看代码会发现，首先，本版本中我们只是把挂载放到commit阶段，且截止到目前为止的三个版本中，还没有涉及到调和阶段。下一章中，我们将对该阶段进行补充。
+
+#### Reconciliation
 所谓Reconciliation（调和），就是`数据更新后生成「新的虚拟 DOM」，React 以这个新虚拟 DOM 为 “数据源”，对比「旧 Fiber 树（current 树）」来构建「新 Fiber 树（workInProgress 树）」，并在构建过程中标记差异`。这个定义是我目前看到的最准确的定义，没有之一。每次fiber节点的对比，会根据情况给fiber打上对应的tag，就是所谓的effectTag，例如`placement、update、deletion`等，然后在commit阶段，根据对应的effecttag，修改真实的dom。
+
 

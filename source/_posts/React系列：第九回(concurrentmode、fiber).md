@@ -93,7 +93,7 @@ fiber本质也是一种数据结构，类似vnode。在vue中，`vnode --> 真�
 #### 代码
 
 ```javascript
-
+// 版本2:fiber碎片化渲染任务
 let nextUniteWork = null
 const myCreateElement = (type, props, ...children) => {
   return {
