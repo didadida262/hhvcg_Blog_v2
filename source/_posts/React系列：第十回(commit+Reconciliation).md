@@ -31,6 +31,7 @@ fiber结构的生成及dom挂载，是同步进行的。这直接导致一个现
 `思路`： 用一个wiproot变量，存储整个fiber，等待生成完成后，统一遍历这个wiproot，一次性挂载
 改造后的完整代码:
 ```javascript
+// 版本3:隔离调和和提交阶段
 
 let nextUniteWork = null
 let wiproot = null
