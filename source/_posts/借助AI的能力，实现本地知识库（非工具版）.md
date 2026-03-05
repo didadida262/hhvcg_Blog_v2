@@ -13,7 +13,7 @@ category: AI
 后端：**Python 3.8+**
 前端: **React 18、Aceternity UI、Framer Motion**
 AI模型： 
-- **嵌入模型**: all-MiniLM-L6-v2 (384维向量)，将文本分割成向量
+- **嵌入模型**: all-MiniLM-L6-v2 (384维向量)，将问题的文本分割成向量，寻找匹配的答案
 - **推理模型**: gemma3:4b (Ollama本地部署)，分析结果并用人话返回answer
 
 ### 模型工作流程
