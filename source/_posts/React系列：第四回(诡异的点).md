@@ -52,4 +52,5 @@ const AboutComponent = () => {
 setCount(count + 1)：拿你当前作用域里 count 的值，加 1 后设置状态；
 setCount(prev => prev + 1)：等到 React 执行这个 updater 函数的时候，再把“那时的最新状态”作为 prev 传入，返回新的状态值。`记住：`更新函数不会在调用 setCount 时立刻运行，而是被 React 暂存到更新队列中；
 
-
+**返回一开始的疑惑点，为什么在vue中修改完后拿到的是最新的值呢？**
+一语道破：是因为 Vue 的状态更新是「同步修改值 + 异步触发视图更新」，而 React 是「异步修改状态（批处理） + 异步触发渲染」。
