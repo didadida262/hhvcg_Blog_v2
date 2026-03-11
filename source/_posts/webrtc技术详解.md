@@ -4,7 +4,7 @@ date: 2026-03-11 23:51:24
 category:
 ---
 
-#### 从本文开始的系列文章，将详细研究webrtc的相关技术，最后以一个点对点的视频通话demo散花。
+#### 本文将详细研究webrtc的相关技术，最后以一个点对点的视频通话demo散花。
 
 #### webrtc核心模块
 - `MediaStream`（媒体流模块）：负责捕获摄像头、麦克风的音视频数据，生成媒体流，提供媒体轨道的添加、移除、切换等基础操作。
@@ -13,7 +13,7 @@ category:
 
 #### 工作流程
 
-<img src="/img/webrtc1.png" alt="">
+<img src="/img/webrtc2_1.png" alt="">
 
 如上图所示，通信流程包含了四方玩家：两个peer、信令服务器及stun服务器。过程解释：
 - 第一步：发起方（peer1）创建RTCPeerConnection（配置STUN服务器），加入本地音视频流，然后创建Offer，发给接收方（peer2）；
@@ -34,4 +34,9 @@ category:
 需要注意的点：
 1. 无需“等待拿到Answer后，再拿公网IP”，双方在交换Offer/Answer的同时，就会触发ICE候选的获取和转发，流程是并行推进的，不是完全顺序等待。
 2. 双方交换ICE候选、完成NAT穿透、建立P2P对等连接后，音视频流直接在peer1和peer2之间传输，不经过信令服务器（后端）。其中，这里的`直接在peer1和peer2之间传输`,其本质是rtp协议，他专门为音视频实时传输设计，低延迟、适配高频大数据量，是 WebRTC 传音视频的核心协议；
+
+花了大概两小时，整了一个基于webrtc的点对点视频应用，技术栈react + ts + aceternity + vite，界面如下：
+<img src="/img/webrtc2_2.png" alt="">
+
+测试了下，效果还不错，完结散花。
 
