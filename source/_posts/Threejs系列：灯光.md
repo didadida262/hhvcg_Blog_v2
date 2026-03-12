@@ -1,7 +1,7 @@
 ---
 title: Threejs系列：灯光
 date: 2023-11-25 06:46:21
-category: 前端三维系列
+category: 图形化开发
 ---
 
 ### 本文介绍threejs中的灯光相关设置

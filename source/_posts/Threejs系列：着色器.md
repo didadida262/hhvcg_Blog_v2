@@ -1,7 +1,7 @@
 ---
 title: Threejs系列：着色器
 date: 2023-11-28 17:42:43
-category: 前端三维系列
+category: 图形化开发
 ---
 
 ### 本文研究下threejs中，着色器的相关内容及使用方法

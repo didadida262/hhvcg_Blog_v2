@@ -1,7 +1,7 @@
 ---
 title: Paperjs：坐标系相关
 date: 2023-09-22 15:43:18
-category: Paperjs系列
+category: 图形化开发
 ---
 
 ### 本文将详细介绍paperjs坐标相关的点

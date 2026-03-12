@@ -1,7 +1,7 @@
 ---
 title: Threejs系列：补间动画
 date: 2023-12-07 09:14:06
-category: 前端三维系列
+category: 图形化开发
 ---
 
 ### 本文介绍threejs中的补间动画

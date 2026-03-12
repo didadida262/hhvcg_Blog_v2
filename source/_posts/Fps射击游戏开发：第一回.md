@@ -1,7 +1,7 @@
 ---
 title: Fps射击游戏开发：第一回
 date: 2025-09-03 12:12:43
-category: 游戏杂谈
+category: 图形化开发
 
 ---
 

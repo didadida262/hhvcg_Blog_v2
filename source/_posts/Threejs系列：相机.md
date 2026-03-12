@@ -1,7 +1,7 @@
 ---
 title: Threejs系列：相机
 date: 2023-11-24 14:10:43
-category: 前端三维系列
+category: 图形化开发
 ---
 
 ### 本文主要研究一下threejs中的相机

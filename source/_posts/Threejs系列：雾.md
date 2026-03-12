@@ -1,7 +1,7 @@
 ---
 title: Threejs系列：雾
 date: 2023-12-05 20:33:20
-category: 前端三维系列
+category: 图形化开发
 ---
 
 ### Thresj支持雾气的效果，本文简单介绍下

@@ -1,7 +1,7 @@
 ---
 title: Paperjs：像素打印机
 date: 2023-08-25 09:35:40
-category: Paperjs系列
+category: 图形化开发
 ---
 
 ### 本文介绍一个像素打印机的小玩具

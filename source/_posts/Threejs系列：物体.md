@@ -1,7 +1,7 @@
 ---
 title: Threejs系列：物体
 date: 2023-12-03 17:22:26
-category: 前端三维系列
+category: 图形化开发
 ---
 
 ### 本文介绍Threejs中物体(geometory)相关内容

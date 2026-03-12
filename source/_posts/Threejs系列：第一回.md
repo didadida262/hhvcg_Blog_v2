@@ -1,7 +1,7 @@
 ---
 title: Threejs系列：第一回
 date: 2023-11-16 09:31:44
-category: 前端三维系列
+category: 图形化开发
 ---
 
 #### 本文简单介绍threejs的基本内容。

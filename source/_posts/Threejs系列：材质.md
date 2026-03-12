@@ -1,7 +1,7 @@
 ---
 title: Threejs系列：材质
 date: 2023-12-03 17:04:08
-category: 前端三维系列
+category: 图形化开发
 ---
 
 ### 本文介绍材质相关内容

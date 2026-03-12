@@ -1,7 +1,7 @@
 ---
 title: webgl系列：概览
 date: 2023-11-16 09:17:16
-category: 前端三维系列
+category: 图形化开发
 ---
 
 ### 本文简单介绍webgl基础

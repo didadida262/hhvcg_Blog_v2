@@ -1,7 +1,7 @@
 ---
 title: Threejs系列：md2模型
 date: 2023-12-07 16:20:02
-category: 前端三维系列
+category: 图形化开发
 ---
 
 ### 本文介绍如何将md2模型，导进我们的页面中
