@@ -1,7 +1,7 @@
 ---
 title: Webpack系列：第五回(性能优化)
 date: 2023-09-06 02:28:21
-category: Webpack系列
+category: 前端剑气双修
 
 ---
 ### 本文中，我们会借助一个项目，展示webpack的各个优化手段，对项目的优化效果
