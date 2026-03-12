@@ -1,7 +1,7 @@
 ---
 title: CSS系列：基础内容
 date: 2023-09-06 22:22:00
-category: css专栏
+category: 前端剑气双修
 
 ---
 

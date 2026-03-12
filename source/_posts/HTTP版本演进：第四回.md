@@ -1,7 +1,7 @@
 ---
 title: HTTP版本演进：第四回
 date: 2023-10-20 09:59:43
-category: 网络杂谈
+category: 通信杂谈
 ---
 
 

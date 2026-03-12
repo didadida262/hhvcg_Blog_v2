@@ -1,7 +1,7 @@
 ---
 title: CSS系列：BFC
 date: 2023-10-30 11:31:24
-category: css专栏
+category: 前端剑气双修
 ---
 
 ### 本文简单聊聊BFC(块级格式化上下文)

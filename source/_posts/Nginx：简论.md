@@ -1,6 +1,6 @@
 ---
 title: Nginx--简论
-category: 网络杂谈
+category: 通信杂谈
 date: 2023-08-21 10:01:48
 tags:
 ---

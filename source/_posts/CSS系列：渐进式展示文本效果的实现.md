@@ -1,7 +1,7 @@
 ---
 title: CSS系列：渐进式展示文本效果的实现
 date: 2024-04-22 13:43:10
-category: css专栏
+category: 前端剑气双修
 
 ---
 

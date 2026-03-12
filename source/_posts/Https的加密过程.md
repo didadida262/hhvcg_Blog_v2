@@ -1,7 +1,7 @@
 ---
 title: Https的加密过程
 date: 2024-03-13 12:29:35
-category: 网络杂谈
+category: 通信杂谈
 ---
 
 ### 本文介绍目下的https协议，是如何进行加密的

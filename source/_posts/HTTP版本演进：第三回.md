@@ -1,6 +1,6 @@
 ---
 title: HTTP版本演进：第三回
-category: 网络杂谈
+category: 通信杂谈
 date: 2023-08-03 00:12:56
 tags:
 ---
