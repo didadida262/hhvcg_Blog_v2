@@ -6,10 +6,12 @@ comments: false
 
 Hi, I'm **Miles | Isshin**.
 
-[isshin-kai.com](https://isshin-kai.com) is my personal tech blog. I write about:
+[isshin-kai.com](https://isshin-kai.com) is a personal technical blog focused on:
 
-- Frontend engineering and Web fundamentals (JavaScript, Vue, React, performance, networking, etc.)
-- Graphics and visualization practices (Three.js, Canvas, Cesium, and more)
-- Study notes, debugging write-ups, and project experience
+- **Frontend engineering** — JavaScript, Vue, React, build tools, and application architecture
+- **Web internals** — browsers, networking, HTTP, performance, and debugging in production
+- **Graphics programming** — Canvas, Three.js, and related visualization practices
 
-Articles are written or curated by me and updated over time. If you have questions or feedback, please reach out via the [Contact](/contact/) page.
+I write study notes, deep dives, and postmortems from real projects. The goal is practical, original technical content for developers.
+
+Questions or feedback? See the [Contact](/contact/) page.
