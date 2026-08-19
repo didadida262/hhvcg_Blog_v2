@@ -1,4 +1,5 @@
 ---
+published: false
 title: DNS杂谈
 date: 2023-09-06 10:22:55
 category: 通信杂谈

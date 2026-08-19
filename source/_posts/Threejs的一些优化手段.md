@@ -1,4 +1,5 @@
 ---
+published: false
 title: Threejs的一些优化手段
 date: 2023-12-10 09:08:26
 category: 性能的考量

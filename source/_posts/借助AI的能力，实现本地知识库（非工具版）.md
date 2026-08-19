@@ -1,4 +1,5 @@
 ---
+published: false
 title: 借助AI的能力，实现本地知识库（非工具版）
 date: 2025-09-26 10:35:58
 category: AI

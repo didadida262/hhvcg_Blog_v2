@@ -1,4 +1,5 @@
 ---
+published: false
 title: 基于opensumi的编辑器问题
 date: 2024-9-25 05:42:20
 category: 性能的考量

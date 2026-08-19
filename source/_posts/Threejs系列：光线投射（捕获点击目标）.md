@@ -1,4 +1,5 @@
 ---
+published: false
 title: Threejs系列：光线投射（捕获点击目标）
 date: 2023-12-05 21:23:23
 category: 图形化开发

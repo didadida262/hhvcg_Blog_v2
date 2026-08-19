@@ -1,4 +1,5 @@
 ---
+published: false
 title: JS继承相关
 category: 前端剑气双修
 date: 2023-08-21 11:04:11

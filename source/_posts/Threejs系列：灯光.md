@@ -1,4 +1,5 @@
 ---
+published: false
 title: Threejs系列：灯光
 date: 2023-11-25 06:46:21
 category: 图形化开发

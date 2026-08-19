@@ -1,4 +1,5 @@
 ---
+published: false
 title: Threejs系列：物体
 date: 2023-12-03 17:22:26
 category: 图形化开发

@@ -1,4 +1,5 @@
 ---
+published: false
 title: Threejs系列：第三回(贴图纹理)
 date: 2023-11-16 10:24:59
 category: 图形化开发

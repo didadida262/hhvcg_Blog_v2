@@ -1,4 +1,5 @@
 ---
+published: false
 title: The Method Of Learning
 date: 2025-07-18 19:03:32
 category: Miscellany

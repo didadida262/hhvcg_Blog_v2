@@ -1,4 +1,5 @@
 ---
+published: false
 title: Threejs系列：材质
 date: 2023-12-03 17:04:08
 category: 图形化开发

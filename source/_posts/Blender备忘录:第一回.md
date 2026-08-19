@@ -1,4 +1,5 @@
 ---
+published: false
 title: Blender备忘录：第一回
 date: 2023-11-26 13:15:04
 category: 图形化开发

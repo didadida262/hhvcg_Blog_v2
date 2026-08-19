@@ -1,4 +1,5 @@
 ---
+published: false
 title: Threejs系列：md2模型
 date: 2023-12-07 16:20:02
 category: 图形化开发

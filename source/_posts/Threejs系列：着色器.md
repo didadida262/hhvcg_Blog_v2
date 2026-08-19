@@ -1,4 +1,5 @@
 ---
+published: false
 title: Threejs系列：着色器
 date: 2023-11-28 17:42:43
 category: 图形化开发
